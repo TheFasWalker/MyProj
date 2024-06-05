@@ -1,0 +1,24 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    padding: 0;
+    margin: 0;
+    border: none;
+    list-style-type: none;
+    text-decoration: none;
+}
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
