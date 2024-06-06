@@ -27,17 +27,17 @@ if( isset($data['photoUrl']) && $data['photoUrl'] != '' && $data['photoUrl'] != 
             </ul>
             <ul>
                 <li> Ответственный
-                    <?= (isset($data['responsiblePerson']) && $data['responsiblePerson'] != '' && $data['responsiblePerson'] != ' ')
+                    <?= (isset($data['responsiblePerson']) && trim($data['responsiblePerson']) != '' )
                         ? "<a href='" . htmlspecialchars($data['responsiblePersonLink']) . "'>" . htmlspecialchars($data['responsiblePerson']) . "</a>"
                         :
                         ' не назначен'?>
                 </li>
-                <?= (isset($data['length']) && $data['length'] != '' && $data['length'] != ' ')
+                <?= (isset($data['length']) && trim($data['length']) != '' )
                 ?
                 "<li>Длительность : " .  $data['length'] . "</li>"
                 : ''
                 ?>
-                <?= (isset($data['eventLink']) && $data['eventLink'] != '' && $data['eventLink'] != ' ')
+                <?= (isset($data['eventLink']) && trim($data['eventLink'] != '') )
                     ?
                     "<li><a href='" .  $data['eventLink'] . "'  target='_blank'> ССылка на событие</a></li>"
                     :
