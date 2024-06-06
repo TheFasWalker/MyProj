@@ -5,7 +5,8 @@
 @import 'variables';
 
 // Bootstrap
-@import 'bootstrap/scss/bootstrap';
+/* @import 'bootstrap/scss/bootstrap'; */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,12 +14,33 @@
 *{
     padding: 0;
     margin: 0;
-    border: none;
     list-style-type: none;
     text-decoration: none;
+    box-sizing: border-box;
+}
+
+button{
+    padding: 0;
+    margin: 0;
+    /* border: none; */
+    cursor: pointer;
+
 }
 img{
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+.container{
+    @apply max-w-[1920px] px-12 w-full my-auto
+}
+.customButton{
+    @apply py-3 px-3 border-[2px] border-[#8f9399]
+
+}
+.customButton:hover{
+    @apply text-white bg-[#8f9399]
+}
+.custonInput{
+    @apply border-[1px] rounded pl-1
 }
