@@ -14,6 +14,5 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/events', [EventsIndexController::class, 'index'])->name('events');
-
 Route::get('/users', [UsersIndexController::class, 'index'])->name('users');
 Route::get('/user/01' , [UserController::class, 'index'])->name('user01');

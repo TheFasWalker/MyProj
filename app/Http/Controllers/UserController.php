@@ -27,7 +27,7 @@ class UserController extends Controller
             'name'=>'Сергей',
             'nickName'=>'KIR',
             'surname'=>'Сергеевич',
-            'family'=>'Кирбицкий',
+            'family'=>'Кербицкий',
             'number'=>'01',
             'userId'=>'01',
             'driverLicense'=>' Категория BC',

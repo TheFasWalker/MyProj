@@ -9,18 +9,18 @@
 
             @guest
             <div class="ml-auto">
-                @if (Route::has('login') )
+                @if (Route::has('login') && (request()->segment(1) =='login' ))
                     <a  class="customButton" href="{{ route('register') }}">Регистрация</a>
                 @endif
-                @if (Route::has('register'))
+                @if (Route::has('register') && (request()->segment(1) =='register'))
                     <a  class="customButton" href="{{ route('login') }}">Войти</a>
                 @endif
             </div>
             @else
             <nav class="flex flex-row gap-3 ml-5">
-                <a class="customButton" href="{{route('users')}}">Наши участники</a>
-                <a class="customButton" href="{{route('events')}}">События</a>
-                <a class="customButton" href="#">Личный кабинет</a>
+                <a class="customButton {{(request()->segment(1) == 'users') ? 'active' : ''}}" href="{{route('users')}}">Наши участники</a>
+                <a class="customButton {{(request()->segment(1) == 'events') ? 'active' : ''}}" href="{{route('events')}}">События</a>
+                <a class="customButton {{(request()->segment(1) == 'lk') ? 'active' : ''}}" href="#">Личный кабинет</a>
             </nav>
             <div class="ml-auto">
                 <form action="{{ route('logout') }}" method="POST" >

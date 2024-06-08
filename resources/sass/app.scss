@@ -38,6 +38,10 @@ img{
     @apply py-3 px-3 border-[2px] border-[#8f9399]
 
 }
+
+.customButton.active{
+    @apply text-white bg-[#5b5e62]
+}
 .customButton:hover{
     @apply text-white bg-[#8f9399]
 }
