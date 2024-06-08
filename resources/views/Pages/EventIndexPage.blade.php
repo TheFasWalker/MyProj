@@ -15,7 +15,7 @@ $eventList = [
         'responsiblePersonLink' => 'https://vk.com/feed',
         'photoUrl' => 'https://sun9-23.userapi.com/impg/5V41RLCJyZEmLrV-ASdR0Bp13GbCT8P2KnvDLQ/5BM3GMgWtMA.jpg?size=960x1280&quality=95&sign=343e4d59ef1b7b5e175e6e46bd718170&type=album',
         'eventLink' => '',
-        'showMore'=>'#'
+        'showMore'=>'01'
     ],
     [
         'name' => 'eventName2',

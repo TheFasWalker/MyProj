@@ -52,7 +52,7 @@ if( isset($data['photoUrl']) && $data['photoUrl'] != '' && $data['photoUrl'] != 
 
 
     <a class="w-[100%] flex items-center justify-center h-10 border font-bold mt-auto hover:bg-slate-300 hover:text-white"
-     href="{{$data['showMore']}}">Подробнее</a>
+     href="event/{{$data['showMore']}}">Подробнее</a>
 
 
 

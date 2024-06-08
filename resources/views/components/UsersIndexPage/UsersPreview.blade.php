@@ -20,7 +20,7 @@
         :content="$data['family']"
         />
 
-        <a href="{{$data['userId']}}" class=" ml-auto border p-2 hover:bg-slate-500 hover:text-white">Подробнее</a>
+        <a href="users/{{$data['userId']}}" class=" ml-auto border p-2 hover:bg-slate-500 hover:text-white">Подробнее</a>
 
 
 </div>
