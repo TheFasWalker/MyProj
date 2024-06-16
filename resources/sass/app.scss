@@ -48,3 +48,23 @@ img{
 .custonInput{
     @apply border-[1px] rounded pl-1
 }
+.header-menu{
+
+    @apply h-[52px] w-[52px] rounded-full;
+
+    .round,
+    .people{
+        fill: #8f9399;
+    }
+    &:hover{
+        background-color: #5b5e62;
+        .round,
+        .people{
+            fill: #FFFFFF;
+        }
+    }
+
+}
+// .active .header-menu{
+//     @apply border
+// }
