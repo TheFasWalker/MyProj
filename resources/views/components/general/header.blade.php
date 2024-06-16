@@ -20,7 +20,7 @@
             <nav class="flex flex-row gap-3 ml-5">
                 <a class="customButton {{(request()->segment(1) == 'users') ? 'active' : ''}}" href="{{route('users')}}">Наши участники</a>
                 <a class="customButton {{(request()->segment(1) == 'events') ? 'active' : ''}}" href="{{route('events')}}">События</a>
-                {{-- <a class="customButton {{(request()->segment(1) == 'lk') ? 'active' : ''}}" href="#">Личный кабинет</a> --}}
+                <a class="customButton {{(request()->segment(1) == 'organizers') ? 'active' : ''}}" href="{{route('organizers')}}">Организаторы</a>
             </nav>
             <div class="ml-auto relative">
                 <button class="header-menu js-header-menu" title="Личный кабинет">
