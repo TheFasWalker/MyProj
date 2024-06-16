@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('link')->nullable();
             $table->text('info')->nullable();
+            $table->string('orgLink')->nullable();
             $table->timestamps();
         });
     }

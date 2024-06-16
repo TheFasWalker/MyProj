@@ -24,3 +24,5 @@ Route::get('/event/01', [EventController::class, 'index'])->name('event1');
 Route::get('/lk', [PersonalAreaController::class, 'index'])->name('lk');
 Route::get('/organizers', [OrganisatorsIndexController::class, 'index'])->name('organizers');
 
+
+
