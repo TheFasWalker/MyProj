@@ -4,7 +4,10 @@
     <div class=" container">
         <h1 class="text-5xl pb-[10px]">Личные ланные (редактирование)</h1>
         <div class="grid grid-cols-[250px_1fr] w-full">
-            <img src="{{ $userPhoto }}" alt="">
+            <div class="flex items-start">
+                <img class="h-auto" src="{{ $userPhoto }}" alt="">
+            </div>
+
             <form class="w-full flex flex-col gap-2">
                 <fieldset class="border p-4 grid grid-cols-4">
                     <legend class="p-2">Личные данные</legend>

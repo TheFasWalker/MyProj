@@ -5,5 +5,5 @@
     <?= isset($orgItem['description']) ?
     "<p>{$orgItem['description']}</p>" : '<span> Краткое описание отсутствует</span>'
      ?>
-    <button class="customButton">Подробнее</button>
+    <a href="{{$orgItem['detailPage']}}" class="customButton flex items-center justify-center">Подробнее</a>
 </div>
