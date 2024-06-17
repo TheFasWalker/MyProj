@@ -42,6 +42,7 @@
                 <div class=" rounded-xl   absolute flex flex-col gap-2 right-0 top-[100%] w-[150px] bg-white overflow-hidden max-h-0 js-header-lk-menu">
                   <div class="p-2 border w-[150px] flex flex-col items-end gap-2">
                       <a href="{{route('lk')}}">Личный кабинет </a>
+                      <a href="{{route('editlk')}}">Редактировать данные</a>
                       <form action="{{ route('logout') }}" method="POST" >
                         @csrf
                         <button class="" type="submit" >Выйти</button>

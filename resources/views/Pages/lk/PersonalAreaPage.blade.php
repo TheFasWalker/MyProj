@@ -2,17 +2,18 @@
 
 @section('content')
     <div class=" container">
+        <h1 class="text-5xl pb-[10px]">Личные ланные</h1>
         <div class="grid grid-cols-2 w-full">
             <img src="{{$userPhoto}}" alt="">
-            <div class="w-full flex flex-col">
+            <div class="w-full flex flex-col gap-2">
                 <span>Имя : {{$name}}</span>
                 <span>Фамилия :{{$family}}</span>
                 <span>Отчество :{{$surname}}</span>
                 <span>Позывной :{{$nickName}}</span>
-                <span>Номер :{{$number}}</span>
+                <span>Номер :R-{{$number}}</span>
                 <span>Водительские права:{{$driverLicense}}</span>
                 <span>Контактный номер телефона:{{$tel}}</span>
-<?= $auto == true ? '<span>имеется автомобиль</span>' : ''?>
+                <?= $auto == true ? '<span>имеется автомобиль</span>' : ''?>
                 <span>Дата рождения :{{$burthday}}</span>
                 <div class="">
                     <span>Противопоказания:</span>
