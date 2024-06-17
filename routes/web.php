@@ -26,6 +26,7 @@ Route::get('/lk/edit', [PersonalAreaController::class, 'edit'])->name('editlk');
 
 Route::get('/organizers', [OrganisatorsIndexController::class, 'index'])->name('organizers');
 Route::get('/org/1', [OrgaIndexController::class, 'index'])->name('org01');
+Route::get('/org/1/edit', [OrgaIndexController::class, 'edit'])->name('org01Edit');
 
 
 
