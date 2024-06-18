@@ -25,6 +25,7 @@
                         value={{$nickName}} inputjsclass='' description="Ваш позывной"
                         />
                         <x-general.ui.inputTextfield
+                        placeholder='Контакты на крайний случай'
                         title="Экстренные контакты"
                         description='Контакты для экстренной связи на самый крайний случай'
                         value={{$extraContacts}}/>
@@ -38,27 +39,42 @@
                     value={{$number}} inputjsclass='' description="Назначенный номер" />
 
 
-                    <x-general.ui.inputCheckbox title="Наличие авто" name="auto" :value='$auto'/>
+                    <x-general.ui.inputCheckbox
+                    title='Наличие авто'
+                    name="car"
+                    :value='$auto'
+                    description='Наличие авто для общего понимания мобильности'
+                    />
 
                     <x-inputDriveSelect name='driverLicense' title='Водительские права' />
                 </fieldset>
+{{-- ???????? --}}
+{{-- :value=$allergies --}}
+{{-- value={{$name}} --}}
 
                 <fieldset class="border p-4 grid grid-cols-2 gap-3">
                     <legend class="p-2">Здоровье</legend>
                     <x-general.ui.inputTextfield
                         title="Аллергии"
                         description='Разного рода четко выраженные аллергии'
-                        :value=$allergies/>
+                        :value=$allergies
+                        placeholder='Аллергии'
+
+                        />
                         <x-general.ui.inputTextfield
                         title="Противопоказания"
                         description='Разного рода четко выраженные противопоказания'
-                        :value="$contraindications"/>
+                        placeholder='Разного рода четко выраженные противопоказания'
+                        :value="$contraindications"
+                        />
                 </fieldset>
                 <x-general.ui.inputTextfield
                 title="Дополнительная информация"
                 description='Разная инофрмация о вас которая может быть интересна другим'
-                :value='$about'/>
-                <button class="customButton">Сохранить</button>
+                :value='$about'
+                placeholder='Дополнительная информация'
+                />
+                <button class="customButton" type="submit">Сохранить</button>
         </div>
         </form>
     </div>
