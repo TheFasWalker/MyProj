@@ -13,11 +13,21 @@ return new class extends Migration
     {
         Schema::create('organizers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->string('link')->nullable();
-            $table->text('info')->nullable();
+            $table->string('orgGroupName');
+            $table->string('orgGroupLink')->nullable();
+            $table->string('orgName')->nullable();
             $table->string('orgLink')->nullable();
+            $table->string('orgphoto')->nullable();
+            $table->boolean('rotationTechnique')->nullable();
+            $table->boolean('warTechnique')->nullable();
+            $table->boolean('peoplesCars')->nullable();
+            $table->boolean('medicine')->nullable();
+            $table->boolean('engeneer')->nullable();
+            $table->longText('description')->nullable();
+
+
+
+
             $table->timestamps();
         });
     }
@@ -30,3 +40,4 @@ return new class extends Migration
         Schema::dropIfExists('organizers');
     }
 };
+

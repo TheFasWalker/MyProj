@@ -18,9 +18,10 @@
             </div>
             @else
             <nav class="flex flex-row gap-3 ml-5">
-                <a class="customButton {{(request()->segment(1) == 'users') ? 'active' : ''}}" href="{{route('users')}}">Наши участники</a>
-                <a class="customButton {{(request()->segment(1) == 'events') ? 'active' : ''}}" href="{{route('events')}}">События</a>
+                {{-- <a class="customButton {{(request()->segment(1) == 'users') ? 'active' : ''}}" href="{{route('users')}}">Наши участники</a> --}}
+                {{-- <a class="customButton {{(request()->segment(1) == 'events') ? 'active' : ''}}" href="{{route('events')}}">События</a> --}}
                 <a class="customButton {{(request()->segment(1) == 'organizers') ? 'active' : ''}}" href="{{route('organizers')}}">Организаторы</a>
+                <a class="customButton" href="{{route('CreateOrganizer')}}">Новый организатор</a>
             </nav>
             <div class="ml-auto relative">
                 <button class="header-menu js-header-menu" title="Личный кабинет">
@@ -41,8 +42,8 @@
                 </button>
                 <div class=" rounded-xl   absolute flex flex-col gap-2 right-0 top-[100%] w-[150px] bg-white overflow-hidden max-h-0 js-header-lk-menu">
                   <div class="p-2 border w-[150px] flex flex-col items-end gap-2">
-                      <a href="{{route('lk')}}">Личный кабинет </a>
-                      <a href="{{route('editlk')}}">Редактировать данные</a>
+                      {{-- <a href="{{route('lk')}}">Личный кабинет </a> --}}
+                      {{-- <a href="{{route('editlk')}}">Редактировать данные</a> --}}
                       <form action="{{ route('logout') }}" method="POST" >
                         @csrf
                         <button class="" type="submit" >Выйти</button>

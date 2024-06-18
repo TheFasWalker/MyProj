@@ -49,8 +49,8 @@
                     <x-inputDriveSelect name='driverLicense' title='Водительские права' />
                 </fieldset>
 {{-- ???????? --}}
-{{-- :value=$allergies --}}
-{{-- value={{$name}} --}}
+{{-- :value="$allergies" :$namw  --}}
+{{-- value={{$name<}} --}}
 
                 <fieldset class="border p-4 grid grid-cols-2 gap-3">
                     <legend class="p-2">Здоровье</legend>
