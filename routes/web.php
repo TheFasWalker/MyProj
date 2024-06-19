@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\EventsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UsersController;
@@ -27,9 +27,9 @@ Route::group(['prefix'=>'organizers'],function (){
     Route::patch('/{id}', [OrganisersController::class, 'update'])->name('updateOrganizer');
     Route::delete('/{id}', [OrganisersController::class, 'destroy'])->name('deleteOrganizer');
 });
-
-// Route::get('/organizers/1', [OrgaIndexController::class, 'index'])->name('org01');
-// Route::get('/organizers/1/edit', [OrgaIndexController::class, 'edit'])->name('org01Edit');
+Route::group(['prefix'=>'events'],function(){
+    Route::get('/',[EventsController::class,'index'])->name('events');
+});
 
 
 Auth::routes();
