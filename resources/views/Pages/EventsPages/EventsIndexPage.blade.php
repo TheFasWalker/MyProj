@@ -6,7 +6,7 @@
         @if (isset($eventList) && count($eventList))
             <div class="grid grid-cols-3 gap-3 pt-4">
                 @foreach ($eventList as $event)
-                    <x-HomePage.event-preview
+                    <x-Events.event-preview
                     :data="$event"
                     />
                 @endforeach

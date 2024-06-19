@@ -1,8 +1,8 @@
 <?php
 $image_url;
 
-if( isset($data['photoUrl']) && $data['photoUrl'] != '' && $data['photoUrl'] != ' ') {
-    $image_url = $data['photoUrl'];
+if( isset($data['previewPhoto']) && $data['previewPhoto'] != '' && $data['previewPhoto'] != ' ') {
+    $image_url = asset($data['previewPhoto']);
 } else {
     $image_url = asset('img/noImage.jpg');
 }
@@ -20,10 +20,13 @@ if( isset($data['photoUrl']) && $data['photoUrl'] != '' && $data['photoUrl'] != 
         <h4 class="text-lg font-semibold text-center mb-3">Особенности мерноприятия</h4>
         <div class="grid gap-2 grid-cols-2">
             <ul>
-                <?= (isset($data['cars']) && $data['cars'] == true )  ? '<li>Игровая техника </li>' : '';?>
-                <?= (isset($data['medicine']) && $data['medicine'] == true ) ? '<li>медицина</li>' : ''; ?>
-                <?= (isset($data['engeneer']) && $data['engeneer'] == true ) ? '<li>Инженерка</li>' : '';?>
-                <?= (isset($data['sqb']) && $data['sqb'] == true ) ? '<li>СиКуБи</li>' : '';?>
+                <?= (isset($data['rotationTechnique']) && $data['rotationTechnique'] == true )  ? '<li>Техника для ротации на полигоне</li>' : '';?>
+                <?= (isset($data['warTechnique']) && $data['warTechnique'] == true ) ? '<li>Применение военной техники</li>' : ''; ?>
+                <?= (isset($data['peoplesCars']) && $data['peoplesCars'] == true ) ? '<li>Использование техники игроков</li>' : '';?>
+                <?= (isset($data['medicine']) && $data['medicine'] == true ) ? '<li>Использование медицины</li>' : '';?>
+                <?= (isset($data['engeneer']) && $data['engeneer'] == true ) ? '<li>Использование инженерной подготовки</li>' : '';?>
+                <?= (isset($data['sqb']) && $data['sqb'] == true ) ? '<li>Сценарий SQB</li>' : '';?>
+                <?= (isset($data['liveCamp']) && $data['liveCamp'] == true ) ? '<li>Жилой(штурмуемый) лагерь</li>' : '';?>
             </ul>
             <ul>
                 <li> Ответственный
@@ -52,7 +55,7 @@ if( isset($data['photoUrl']) && $data['photoUrl'] != '' && $data['photoUrl'] != 
 
 
     <a class="w-[100%] flex items-center justify-center h-10 border font-bold mt-auto hover:bg-slate-300 hover:text-white"
-     href="event/{{$data['showMore']}}">Подробнее</a>
+     href="event/{{$data->id}}">Подробнее</a>
 
 
 
