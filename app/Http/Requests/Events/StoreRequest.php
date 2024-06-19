@@ -37,7 +37,8 @@ class StoreRequest extends FormRequest
             'liveCamp'=>'nullable',
             'descriptionShort'=>'string|nullable',
             'script'=>'string|nullable',
-            'previewPhoto'=>'file|nullable'
+            'previewPhoto'=>'file|nullable',
+            'organizator_id'=>'exists:organizers,id|nullable'
 
         ];
     }

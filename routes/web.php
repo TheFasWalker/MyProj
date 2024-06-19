@@ -31,6 +31,7 @@ Route::group(['prefix'=>'events'],function(){
     Route::get('/create',[EventsController::class,'create'])->name('createEvent');
     Route::post('/',[EventsController::class,'store'])->name('StoreEvent');
     Route::get('/{id}',[EventsController::class,'show'])->name('ShowEvent');
+    // Route::get('/{id}/edit',[EventsController::class,'edit'])->name('ShowEvent');
 });
 
 

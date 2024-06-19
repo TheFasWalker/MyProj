@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Events\StoreRequest;
 use App\Models\Event;
+use App\Models\Organizer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -28,7 +29,9 @@ class EventsController extends Controller
     {
 
         $eventList = Event::all();
-        return view('Pages.EventsPages.EventsIndexPage',compact('eventList'));
+        $orgData = Organizer::all();
+        // dd($eventList);
+        return view('Pages.EventsPages.EventsIndexPage',compact('eventList', 'orgData'));
     }
 
     /**
@@ -36,7 +39,8 @@ class EventsController extends Controller
      */
     public function create()
     {
-        return view('Pages.EventsPages.CreateEventPage');
+        $orgs = Organizer::all();
+        return view('Pages.EventsPages.CreateEventPage',compact('orgs'));
     }
 
     /**
@@ -45,7 +49,9 @@ class EventsController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
-        $data['previewPhoto'] = Storage::put('/images/events', $data['previewPhoto']);
+        if(isset($data['previewPhoto'])){
+            $data['previewPhoto'] = Storage::disk('publiс')->put('/images/events', $data['previewPhoto']);
+        }
         Event::firstOrCreate($data);
         return redirect()->route('events');
     }
@@ -55,7 +61,15 @@ class EventsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $event = Event::find($id);
+        $orgGroupName = null;
+        if(isset($event->organizator_id)){
+            $orgGroup= Organizer::find($event->organizator_id);
+            $orgGroupName = $orgGroup->orgGroupName;
+
+        }
+
+        return view('Pages.EventsPages.EventPage');
     }
 
     /**

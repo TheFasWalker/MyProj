@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+
     <h1>{{$name}}</h1>
     <div class="grid gap-10 grid-cols-[400px_400px_1fr]">
         <div class=" flex flex-col gap-2">

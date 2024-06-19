@@ -1,11 +1,17 @@
 <?php
 $image_url;
-
+$organizationName = '';
 if( isset($data['previewPhoto']) && $data['previewPhoto'] != '' && $data['previewPhoto'] != ' ') {
-    $image_url = asset($data['previewPhoto']);
+    $image_url = asset('storage/' . $data['previewPhoto']);
 } else {
     $image_url = asset('img/noImage.jpg');
-}
+};
+foreach ($orgData as $orgItem) {
+    if($orgItem->id == $data->organizator_id ){
+        $organizationName = $orgItem->orgGroupName;
+    };
+
+};
 ?>
 
 <div class="flex flex-col border rounded-sm py-3 px-3 gap-4">
@@ -46,6 +52,11 @@ if( isset($data['previewPhoto']) && $data['previewPhoto'] != '' && $data['previe
                     :
                     '<li>No eventLink</li>'
                 ?>
+                @if (isset($data->organizator_id) )
+                     <li>Организатор : <a href="{{ route('ShowOrganizer', $data->organizator_id) }}">{{ $organizationName }}</a></li>
+                @else
+                    <li>Организатор не указан</li>
+                @endif
 
             </ul>
 
@@ -55,7 +66,7 @@ if( isset($data['previewPhoto']) && $data['previewPhoto'] != '' && $data['previe
 
 
     <a class="w-[100%] flex items-center justify-center h-10 border font-bold mt-auto hover:bg-slate-300 hover:text-white"
-     href="event/{{$data->id}}">Подробнее</a>
+     href="{{ route('ShowEvent', $data->id ) }}">Подробнее</a>
 
 
 

@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <h1 class="text-5xl">События</h1>
@@ -8,6 +7,7 @@
                 @foreach ($eventList as $event)
                     <x-Events.event-preview
                     :data="$event"
+                    :orgData='$orgData'
                     />
                 @endforeach
 
