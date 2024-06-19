@@ -8,7 +8,7 @@
 
 </form>
 
-        <form action="{{ route('updateOrganizer',$orgData->id ) }}" method="POST" class="pt-5 flex flex-col gap-7" >
+        <form action="{{ route('updateOrganizer',$orgData->id ) }}" method="POST" class="pt-5 flex flex-col gap-7" id="edit" >
             @csrf
             @method('PATCH')
 <h1 class="text-5xl pb-[10px]">Редактирование организатора</h1>
@@ -107,9 +107,16 @@
                     />
                 </fieldset>
             </div>
-            <div class="grid grid-cols-2 gap-5">
-            <button class="customButton" type="submit"> сохранить</button>
-            <button class="customDangerButton" type="submit"> Удалить</button>
         </form>
+            <div class="grid grid-cols-2 gap-5 pt-5">
+            <button class="customButton" type="submit" form="edit"> сохранить</button>
+            <button class="customDangerButton" type="submit" form="delete"> Удалить</button>
+            <form action="{{ route ('deleteOrganizer', $orgData->id)}}" id='delete' method="POST">
+                @csrf
+                @method('DELETE')
+
+            </form>
+
+
     </div>
 @endsection

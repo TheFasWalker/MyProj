@@ -23,8 +23,9 @@ Route::group(['prefix'=>'organizers'],function (){
     Route::get('/create', [OrganisersController::class, 'create'])->name('CreateOrganizer');
     Route::post('/', [OrganisersController::class, 'store'])->name('StoreOrganizer');
     Route::get('/{id}', [OrganisersController::class, 'show'])->name('ShowOrganizer');
-    Route::get('/{id}/edit', [OrganisersController::class, 'edit'])->name('updateOrganizer');
+    Route::get('/{id}/edit', [OrganisersController::class, 'edit'])->name('editOrganizer');
     Route::patch('/{id}', [OrganisersController::class, 'update'])->name('updateOrganizer');
+    Route::delete('/{id}', [OrganisersController::class, 'destroy'])->name('deleteOrganizer');
 });
 
 // Route::get('/organizers/1', [OrgaIndexController::class, 'index'])->name('org01');
