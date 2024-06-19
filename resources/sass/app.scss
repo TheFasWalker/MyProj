@@ -65,6 +65,14 @@ img{
     }
 
 }
+
+
+.customDangerButton{
+    @apply text-white bg-[#e65839]
+}
+.customDangerButton:hover{
+    @apply text-white bg-[#ff0f0f]
+}
 // .active .header-menu{
 //     @apply border
 // }

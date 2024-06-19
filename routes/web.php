@@ -1,14 +1,11 @@
 <?php
 
-use App\Http\Controllers\EventController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UsersIndexController;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\EventsIndexController;
 use App\Http\Controllers\OrganisersController;
-use App\Http\Controllers\PersonalAreaController;
-use App\Http\Controllers\OrgaIndexController;
+
 
 
 
@@ -26,7 +23,8 @@ Route::group(['prefix'=>'organizers'],function (){
     Route::get('/create', [OrganisersController::class, 'create'])->name('CreateOrganizer');
     Route::post('/', [OrganisersController::class, 'store'])->name('StoreOrganizer');
     Route::get('/{id}', [OrganisersController::class, 'show'])->name('ShowOrganizer');
-    // Route::get('/{id}/edit', [OrganisersController::class, 'edit'])->name('EditOrganizer');
+    Route::get('/{id}/edit', [OrganisersController::class, 'edit'])->name('updateOrganizer');
+    Route::patch('/{id}', [OrganisersController::class, 'update'])->name('updateOrganizer');
 });
 
 // Route::get('/organizers/1', [OrgaIndexController::class, 'index'])->name('org01');

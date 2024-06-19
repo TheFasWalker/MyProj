@@ -7,5 +7,10 @@
         placeholder="{{$placeholder}}"
         title="{{$description}}"
         name="{{$name}}"
-        <?= isset($value) ? 'value='.$value : '' ?>>
+        @if(@isset($value))
+             value="<?= isset($value) ? $value : '' ?>"
+        @endisset
+
+        >
+
 </label>

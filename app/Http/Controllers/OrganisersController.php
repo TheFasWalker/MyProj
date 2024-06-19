@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Organizer\StoreRequest;
+use App\Http\Requests\Organizer\UpdateRequest;
 use App\Models\Organizer;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,6 @@ class OrganisersController extends Controller
     public function index()
     {
         $orgList = Organizer::all();
-        // dd($orgList);
         return view('Pages.OrgPages.OrganisatorsIndexPage',compact('orgList'));
     }
 
@@ -62,6 +62,7 @@ class OrganisersController extends Controller
      */
     public function edit(string $id)
     {
+
         $orgData = Organizer::find($id);
         return view('Pages.OrgPages.EditOrgIndexPage',compact('orgData'));
     }
@@ -69,9 +70,12 @@ class OrganisersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreRequest $request, string $id)
     {
-        //
+
+        $data = $request->validated();
+        Organizer::find($id)->update($data);
+        return redirect()-> route('ShowOrganizer', $id);
     }
 
     /**

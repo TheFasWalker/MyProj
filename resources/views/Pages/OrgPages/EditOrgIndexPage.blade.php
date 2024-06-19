@@ -8,11 +8,11 @@
 
 </form>
 
-        <form action="{{ route('StoreOrganizer') }}" method="POST" class="pt-5 flex flex-col gap-7" >
+        <form action="{{ route('updateOrganizer',$orgData->id ) }}" method="POST" class="pt-5 flex flex-col gap-7" >
             @csrf
-
+            @method('PATCH')
 <h1 class="text-5xl pb-[10px]">Редактирование организатора</h1>
-            <div class="grid grid-cols-[250px_350px_1fr] gap-5">
+            <div class="grid grid-cols-[250px_370px_1fr] gap-5">
                 <div class="flex flex-col">
                     <x-general.ui.input
                         title='Название организации'
@@ -21,6 +21,8 @@
                         description='Название орггруппы которое всем известно'
                         name='orgGroupName'
                         inputjsclass=''
+                        :value='$orgData->orgGroupName'
+
                     />
                     @error('orgGroupName')
                     <span>обязательное поле</span>
@@ -31,7 +33,7 @@
                         placeholder=''
                         description=''
                         name='orgGroupLink'
-
+                        :value='$orgData->orgGroupLink'
                         />
                     <x-general.ui.input
                         title='Главный орг'
@@ -39,6 +41,7 @@
                         placeholder='Имя орга'
                         description='Основной представитель орггруппы'
                         name='orgName'
+                        :value='$orgData->orgName'
 
                     />
                     <x-general.ui.input
@@ -47,7 +50,7 @@
                         placeholder='ссылка на орга'
                         description='ссылка для связи с организатором'
                         name='orgLink'
-
+                        :value='$orgData->orgLink'
                     />
                     <x-general.ui.input
                         title='ссылка на превью орггруппы'
@@ -55,7 +58,7 @@
                         placeholder='ссылка на фото орггруппы'
                         description=''
                         name='orgphoto'
-
+                        :value='$orgData->orgphoto'
                     />
                 </div>
 
@@ -65,36 +68,32 @@
                     description='Игравая техника для доставки игроков по полигону'
                     title="Дехника для ротации"
                     name="rotationTechnique"
-
+                    :value='$orgData->rotationTechnique'
                     />
-                    @error('rotationTechnique')
-                    <span>обязательное поле</span>
-                    @enderror
+
                     <x-general.ui.inputCheckbox
                     description='Боевая армейская техника'
                     title="Техника для усиления"
                     name="warTechnique"
+                     :value='$orgData->warTechnique'
                     />
                     <x-general.ui.inputCheckbox
                     description='Личная игравая техника'
                     title="Использование игроками своей техники"
                     name="peoplesCars"
+                     :value='$orgData->peoplesCars'
                     />
                     <x-general.ui.inputCheckbox
                     description='Игравая медицина'
                     title="Сценарии подразумевающие медицину"
                     name="medicine"
-                    value=''/>
-                    <x-general.ui.inputCheckbox
-                    description='Игравая медицина'
-                    title="Медицина"
-                    name="medicine"
-                    value=''/>
+                    :value='$orgData->medicine'/>
+
                     <x-general.ui.inputCheckbox
                     description='Использование растяжек, дистанционных мин и прочей инженерной штуки'
                     title="Инженерная подготовка"
                     name="engeneer"
-                    value=''/>
+                    :value='$orgData->engeneer'/>
                 </fieldset>
                 <fieldset class="border p-4">
                     <legend class="p-2">Общее описание</legend>
@@ -103,11 +102,14 @@
                         name='description'
                         title=''
                         placeholder='Общее описание'
+                        :value='$orgData->description'
 
                     />
                 </fieldset>
             </div>
+            <div class="grid grid-cols-2 gap-5">
             <button class="customButton" type="submit"> сохранить</button>
+            <button class="customDangerButton" type="submit"> Удалить</button>
         </form>
     </div>
 @endsection
