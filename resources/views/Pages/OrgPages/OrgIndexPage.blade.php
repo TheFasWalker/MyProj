@@ -7,7 +7,7 @@
         <h1 class="text-5xl">Организатор : {{$orgData['orgGroupName']}}</h1>
         <div class="grid grid-cols-[500px_1fr] gap-3 pt-4">
             <div class="">
-                <span>Организатор: </span> <a href="{{$orgData['orgGroupLink']}}" target="_blank">{{$orgData['orgGroupName']}}</a>
+                <span>Организатор: </span> <a href="{{$orgData['orgGroupLink']}}" target="_blank">{{$orgData['orgGroupName']}}(ссылка)</a>
                 <img src={{isset($orgData['orgphoto']) ? $orgData['orgphoto'] :  asset('img/noImage.jpg') }} alt="">
 
             </div>

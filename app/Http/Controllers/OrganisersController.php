@@ -41,9 +41,7 @@ class OrganisersController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        // dd($request);
         $data = $request->validated();
-        // dd($data);
         Organizer::create($data);
         return redirect()->route('organizers');
 
@@ -55,7 +53,6 @@ class OrganisersController extends Controller
     public function show(string $id)
     {
         $orgData = Organizer::find($id);
-        // dd($orgData);
         return view('Pages.OrgPages.OrgIndexPage',compact('orgData'));
 
     }

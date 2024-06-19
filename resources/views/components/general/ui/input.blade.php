@@ -1,4 +1,4 @@
-<label class="flex flex-col  w-fit cursor-pointer" >
+<label class="flex flex-col w-full cursor-pointer" >
     <span class="">{{$title}}</span>
 
     <input

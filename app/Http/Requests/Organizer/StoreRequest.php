@@ -33,11 +33,11 @@ class StoreRequest extends FormRequest
             'orgName'=>'string|nullable',
             'orgLink'=>'string|nullable',
             'orgphoto'=>'string|nullable',
-            'rotationTechnique'=>'accepted|nullable',
-            'warTechnique'=>'accepted|nullable',
-            'peoplesCars'=>'accepted|nullable',
-            'medicine'=>'accepted|nullable',
-            'engeneer'=>'accepted|nullable',
+            'rotationTechnique'=>'nullable',
+            'warTechnique'=>'nullable',
+            'peoplesCars'=>'nullable',
+            'medicine'=>'nullable',
+            'engeneer'=>'nullable',
             'description'=>'longText|nullable'
         ];
     }
@@ -47,6 +47,6 @@ class StoreRequest extends FormRequest
     protected function failedValidation(Validator $validator)
     {
 
-        // dd($this->all(),$validator->errors());
+        dd($this->all(),$validator->errors());
     }
 }

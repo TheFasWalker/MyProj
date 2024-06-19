@@ -67,9 +67,6 @@
                     name="rotationTechnique"
 
                     />
-                    @error('rotationTechnique')
-                    <span>обязательное поле</span>
-                    @enderror
                     <x-general.ui.inputCheckbox
                     description='Боевая армейская техника'
                     title="Техника для усиления"
@@ -84,17 +81,17 @@
                     description='Игравая медицина'
                     title="Сценарии подразумевающие медицину"
                     name="medicine"
-                    value=''/>
+                    />
                     <x-general.ui.inputCheckbox
                     description='Игравая медицина'
                     title="Медицина"
                     name="medicine"
-                    value=''/>
+                    />
                     <x-general.ui.inputCheckbox
                     description='Использование растяжек, дистанционных мин и прочей инженерной штуки'
                     title="Инженерная подготовка"
                     name="engeneer"
-                    value=''/>
+                    />
                 </fieldset>
                 <fieldset class="border p-4">
                     <legend class="p-2">Общее описание</legend>
