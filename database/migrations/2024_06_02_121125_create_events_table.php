@@ -13,16 +13,22 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-
             $table->string('name');
-            $table->text('description')->nullable();
-            $table->date('date')->nullable();
-            $table->boolean('auto')->nullable();
-            $table->boolean('sqb')->nullable();
+            $table->string('eventLink')->nullable();
+            $table->string('timeStart')->nullable();
+            $table->date('dateStart')->nullable();
+            $table->string('timeStop')->nullable();
+            $table->date('dateStop')->nullable();
+            $table->text('descriptionShort')->nullable();
+            $table->text('script')->nullable();
+            $table->boolean('rotationTechnique')->nullable();
+            $table->boolean('warTechnique')->nullable();
+            $table->boolean('peoplesCars')->nullable();
             $table->boolean('medicine')->nullable();
-            $table->boolean('livecamp')->nullable();
-            $table->integer('long');
             $table->boolean('engeneer')->nullable();
+            $table->boolean('sqb')->nullable();
+            $table->boolean('liveCamp')->nullable();
+            $table->string('previewPhoto')->nullable();
 
             $table->unsignedBigInteger('organizator_id')->nullable();
             $table->unsignedBigInteger('responsible_id')->nullable();

@@ -9,6 +9,7 @@
         name="{{$name}}"
         @if(@isset($value))
              value="<?= isset($value) ? $value : '' ?>"
+
         @endisset
 
         >

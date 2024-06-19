@@ -19,7 +19,7 @@
             @else
             <nav class="flex flex-row gap-3 ml-5">
                 {{-- <a class="customButton {{(request()->segment(1) == 'users') ? 'active' : ''}}" href="{{route('users')}}">Наши участники</a> --}}
-                {{-- <a class="customButton {{(request()->segment(1) == 'events') ? 'active' : ''}}" href="{{route('events')}}">События</a> --}}
+                <a class="customButton {{(request()->segment(1) == 'events') ? 'active' : ''}}" href="{{route('events')}}">События</a>
                 <a class="customButton {{(request()->segment(1) == 'organizers') ? 'active' : ''}}" href="{{route('organizers')}}">Организаторы</a>
                 <a class="customButton" href="{{route('CreateOrganizer')}}">Новый организатор</a>
             </nav>

@@ -29,6 +29,8 @@ Route::group(['prefix'=>'organizers'],function (){
 });
 Route::group(['prefix'=>'events'],function(){
     Route::get('/',[EventsController::class,'index'])->name('events');
+    Route::get('/create',[EventsController::class,'create'])->name('createEvent');
+    Route::post('/',[EventsController::class,'store'])->name('StoreEvent');
 });
 
 
