@@ -38,7 +38,7 @@ class StoreRequest extends FormRequest
             'peoplesCars'=>'nullable',
             'medicine'=>'nullable',
             'engeneer'=>'nullable',
-            'description'=>'longText|nullable'
+            'description'=>'string|nullable'
         ];
     }
 

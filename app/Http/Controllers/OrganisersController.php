@@ -41,6 +41,7 @@ class OrganisersController extends Controller
      */
     public function store(StoreRequest $request)
     {
+        // dd($request);
         $data = $request->validated();
         Organizer::create($data);
         return redirect()->route('organizers');
@@ -70,7 +71,7 @@ class OrganisersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreRequest $request, string $id)
+    public function update(UpdateRequest $request, string $id)
     {
 
         $data = $request->validated();

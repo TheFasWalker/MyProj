@@ -82,11 +82,7 @@
                     title="Сценарии подразумевающие медицину"
                     name="medicine"
                     />
-                    <x-general.ui.inputCheckbox
-                    description='Игравая медицина'
-                    title="Медицина"
-                    name="medicine"
-                    />
+
                     <x-general.ui.inputCheckbox
                     description='Использование растяжек, дистанционных мин и прочей инженерной штуки'
                     title="Инженерная подготовка"
