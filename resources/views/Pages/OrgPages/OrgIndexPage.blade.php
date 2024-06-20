@@ -15,7 +15,7 @@
                 <span>Используемые механики</span>
 
                 <ul>
-                     <?= isset($orgData['warTechnique']) && $orgData['warTechnique'] == true ? '<li>Техника для доставки по полигону</li>' : '' ?>
+                    <?= isset($orgData['warTechnique']) && $orgData['warTechnique'] == true ? '<li>Техника для доставки по полигону</li>' : '' ?>
                     <?= isset($orgData['peoplesCars']) && $orgData['peoplesCars'] == true ? '<li>Использование техники игроков</li>' : '' ?>
                     <?= isset($orgData['medicine']) && $orgData['medicine'] == true ? '<li>Игравая медицина</li>'  : ''?>
                     <?= isset($orgData['engeneer']) && $orgData['engeneer'] == true ? '<li>Использование инженерных навыков</li>' : '' ?>

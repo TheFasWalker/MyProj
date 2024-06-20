@@ -6,12 +6,7 @@ if( isset($data['previewPhoto']) && $data['previewPhoto'] != '' && $data['previe
 } else {
     $image_url = asset('img/noImage.jpg');
 };
-foreach ($orgData as $orgItem) {
-    if($orgItem->id == $data->organizator_id ){
-        $organizationName = $orgItem->orgGroupName;
-    };
 
-};
 ?>
 
 <div class="flex flex-col border rounded-sm py-3 px-3 gap-4">
@@ -20,7 +15,7 @@ foreach ($orgData as $orgItem) {
         <img src="<?= $image_url?>" alt="">
     </div>
 
-    <a href="#" target="_blank">{{$data['orgName']}}</a>
+    <a href="#" target="_blank">{{$data->orgName->orgGroupName}}</a>
     <?= (isset($data['description']) ? $data['description'] : '') ?>
     <div class="w-full">
         <h4 class="text-lg font-semibold text-center mb-3">Особенности мерноприятия</h4>
@@ -53,7 +48,7 @@ foreach ($orgData as $orgItem) {
                     '<li>No eventLink</li>'
                 ?>
                 @if (isset($data->organizator_id) )
-                     <li>Организатор : <a href="{{ route('ShowOrganizer', $data->organizator_id) }}">{{ $organizationName }}</a></li>
+                     <li>Организатор : <a href="{{ route('ShowOrganizer', $data->organizator_id) }}">{{$data->orgName->orgGroupName}}</a></li>
                 @else
                     <li>Организатор не указан</li>
                 @endif

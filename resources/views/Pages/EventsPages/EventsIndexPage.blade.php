@@ -7,7 +7,6 @@
                 @foreach ($eventList as $event)
                     <x-Events.event-preview
                     :data="$event"
-                    :orgData='$orgData'
                     />
                 @endforeach
 
