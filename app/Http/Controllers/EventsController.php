@@ -48,10 +48,14 @@ class EventsController extends Controller
      */
     public function store(StoreRequest $request)
     {
+
         $data = $request->validated();
         if(isset($data['previewPhoto'])){
-            $data['previewPhoto'] = Storage::disk('publiс')->put('/images/events', $data['previewPhoto']);
+            $photoLink = Storage::disk('local')->put('public/images/events', $data['previewPhoto']);
+            $photoLink =preg_replace("/public\//", "", $photoLink);
+            $data['previewPhoto'] =$photoLink;
         }
+
         Event::firstOrCreate($data);
         return redirect()->route('events');
     }

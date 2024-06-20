@@ -6,6 +6,7 @@ use App\Http\Requests\Organizer\StoreRequest;
 use App\Http\Requests\Organizer\UpdateRequest;
 use App\Models\Organizer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 
 class OrganisersController extends Controller
@@ -43,6 +44,11 @@ class OrganisersController extends Controller
     {
         // dd($request);
         $data = $request->validated();
+        if(isset($data['orgphoto'])){
+            $photoLink = Storage::disk('local')->put('public/images/orgs', $data['orgphoto']);
+            $photoLink =preg_replace("/public\//", "", $photoLink);
+            $data['orgphoto'] =$photoLink;
+        }
         Organizer::create($data);
         return redirect()->route('organizers');
 

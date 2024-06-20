@@ -32,7 +32,7 @@ class StoreRequest extends FormRequest
             'orgGroupLink'=>'string|nullable',
             'orgName'=>'string|nullable',
             'orgLink'=>'string|nullable',
-            'orgphoto'=>'string|nullable',
+            'orgphoto'=>'file|nullable',
             'rotationTechnique'=>'nullable',
             'warTechnique'=>'nullable',
             'peoplesCars'=>'nullable',

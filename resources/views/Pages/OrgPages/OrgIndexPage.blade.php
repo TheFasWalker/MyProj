@@ -8,7 +8,7 @@
         <div class="grid grid-cols-[500px_1fr] gap-3 pt-4">
             <div class="">
                 <span>Организатор: </span> <a href="{{$orgData['orgGroupLink']}}" target="_blank">{{$orgData['orgGroupName']}}(ссылка)</a>
-                <img src={{isset($orgData['orgphoto']) ? $orgData['orgphoto'] :  asset('img/noImage.jpg') }} alt="">
+                <img src={{isset($orgData['orgphoto']) ? asset('storage/' . $orgData['orgphoto']) :  asset('img/noImage.jpg') }} alt="">
 
             </div>
             <div class="flex flex-col gap-2">

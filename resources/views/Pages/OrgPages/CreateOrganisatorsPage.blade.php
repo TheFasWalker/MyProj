@@ -8,7 +8,7 @@
 
 </form>
 
-        <form action="{{ route('StoreOrganizer') }}" method="POST" class="pt-5 flex flex-col gap-7" >
+        <form action="{{ route('StoreOrganizer') }}" method="POST" class="pt-5 flex flex-col gap-7" enctype="multipart/form-data">
             @csrf
 
 <h1 class="text-5xl pb-[10px]">Создание организатора</h1>
@@ -49,14 +49,11 @@
                         name='orgLink'
 
                     />
-                    <x-general.ui.input
-                        title='ссылка на превью орггруппы'
-                        type='text'
-                        placeholder='ссылка на фото орггруппы'
-                        description=''
-                        name='orgphoto'
+                    <label >
+                        <span>Фото</span>
+                        <input name="orgphoto" class=" block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+                    </label>
 
-                    />
                 </div>
 
                 <fieldset class="border p-4  flex flex-col gap-2 ">
