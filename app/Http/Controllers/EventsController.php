@@ -76,7 +76,10 @@ class EventsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $orgs= Organizer::all();
+        $eventItem = Event::find($id);
+        // dd($eventItem, $orgs);
+        return view('Pages.EventsPages.EditEventPage', compact('eventItem','orgs') );
     }
 
     /**
