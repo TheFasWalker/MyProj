@@ -29,8 +29,6 @@ class EventsController extends Controller
     {
 
         $eventList = Event::all();
-        // $orgData = Organizer::all();
-        // dd($eventList);
         return view('Pages.EventsPages.EventsIndexPage',compact('eventList'));
     }
 
@@ -50,7 +48,6 @@ class EventsController extends Controller
     {
 
         $data = $request->validated();
-        // dd($data);
         if(isset($data['previewPhoto'])){
             $photoLink = Storage::disk('local')->put('public/images/events', $data['previewPhoto']);
             $photoLink =preg_replace("/public\//", "", $photoLink);
@@ -78,7 +75,6 @@ class EventsController extends Controller
     {
         $orgs= Organizer::all();
         $eventItem = Event::find($id);
-        // dd($eventItem, $orgs);
         return view('Pages.EventsPages.EditEventPage', compact('eventItem','orgs') );
     }
 
