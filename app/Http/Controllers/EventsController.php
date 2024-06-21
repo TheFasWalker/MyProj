@@ -67,15 +67,8 @@ class EventsController extends Controller
      */
     public function show(string $id)
     {
-        $event = Event::find($id);
-        $orgGroupName = null;
-        if(isset($event->organizator_id)){
-            $orgGroup= Organizer::find($event->organizator_id);
-            $orgGroupName = $orgGroup->orgGroupName;
-
-        }
-
-        return view('Pages.EventsPages.EventPage');
+        $eventData = Event::find($id);
+        return view('Pages.EventsPages.EventPage', compact('eventData'));
     }
 
     /**

@@ -14,7 +14,6 @@ use App\Http\Controllers\OrganisersController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/users', [UsersController::class, 'index'])->name('users');
 // Route::get('/users/01' , [UserController::class, 'index'])->name('user01');
-// Route::get('/event/01', [EventController::class, 'index'])->name('event1');
 // Route::get('/lk', [PersonalAreaController::class, 'index'])->name('lk');
 // Route::get('/lk/edit', [PersonalAreaController::class, 'edit'])->name('editlk');
 Route::group(['prefix'=>'organizers'],function (){
