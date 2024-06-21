@@ -6,6 +6,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Events\StoreRequest;
+use App\Http\Requests\Events\UpdateRequest;
 use App\Models\Event;
 use App\Models\Organizer;
 use Illuminate\Http\Request;
@@ -81,16 +82,25 @@ class EventsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+        if(isset($data['previewPhoto'])){
+            $photoLink = Storage::disk('local')->put('public/images/events', $data['previewPhoto']);
+            $photoLink =preg_replace("/public\//", "", $photoLink);
+            $data['previewPhoto'] =$photoLink;
+        }
+        Event::find($id)->update($data);
+        return redirect()->route('ShowEvent', $id );
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Event $id)
     {
-        //
+        $id->delete();
+        return redirect()->route('events');
+
     }
 }

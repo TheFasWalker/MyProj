@@ -2,8 +2,9 @@
 
 @section('content')
     <div class="container">
-        <form action="{{ route('StoreEvent') }}" method="POST" class="pt-5 flex flex-col gap-7" id='edit' enctype="multipart/form-data">
+        <form action="{{ route('UpdateEvent', $eventItem->id) }}" method="POST" class="pt-5 flex flex-col gap-7" id='edit' enctype="multipart/form-data">
             @csrf
+            @method('PATCH')
 
             <h1 class="text-5xl pb-[10px]">Создание события</h1>
             <div class="grid grid-cols-[350px_350px_1fr] gap-5">
@@ -72,10 +73,23 @@
                             <input value="{{$eventItem->dateStop}}" type="date" name="dateStop"  class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
                         </div>
 
-                    </div>
 
-                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label>
-                    <input  name="previewPhoto" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+                    </div>
+                    <label class="flex flex-col gap-3" >
+                        <span>Организатор</span>
+                    <select class="form-select" aria-label="Default select example" name="organizator_id">
+                        <option selected >Не выбран</option>
+                        @foreach ($orgs as $org )
+                            <option
+                            value="{{ $org->id }}"
+                            {{$eventItem->organizator_id == $org->id ? 'selected' : '' }}
+                            >
+                            {{ $org->orgGroupName }}
+                        </option>
+                        @endforeach
+                    </select>
+                    </label>
+
 
                 </div>
 
@@ -124,20 +138,11 @@
                     />
                 </fieldset>
                 <fieldset class="border p-4  flex flex-col gap-2 ">
-                    <label class="flex flex-col gap-3" >
-                        <span>Организатор</span>
-                    <select class="form-select" aria-label="Default select example" name="organizator_id">
-                        <option selected >Не выбран</option>
-                        @foreach ($orgs as $org )
-                            <option
-                            value="{{ $org->id }}"
-                            {{$eventItem->organizator_id == $org->id ? 'selected' : '' }}
-                            >
-                            {{ $org->orgGroupName }}
-                        </option>
-                        @endforeach
-                    </select>
-                    </label>
+                    <x-general.ui.inputFile
+                    title="Заменить указанное фото"
+                    name="previewPhoto"
+                    :value='$eventItem->previewPhoto' />
+
                 </fieldset>
             </div>
                 <x-general.ui.inputTextfield
@@ -160,6 +165,11 @@
         <div class="grid grid-cols-2 gap-3">
             <button class="customButton" type="submit" form="edit">Обновить</button>
             <button class="customDangerButton" type="submit" form="delete"> Удалить</button>
+            <form action="{{ route ('DeleteEvent', $eventItem->id)}}" id='delete' method="POST">
+                @csrf
+                @method('DELETE')
+
+            </form>
         </div>
     </div>
 <script>
