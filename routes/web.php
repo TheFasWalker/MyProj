@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\OrganisersController;
-
+use App\Http\Controllers\MechanicsController;
 
 
 
@@ -33,7 +33,15 @@ Route::group(['prefix'=>'events'],function(){
     Route::get('/{id}/edit',[EventsController::class,'edit'])->name('EditEvent');
     Route::patch('/{id}',[EventsController::class,'update'])->name('UpdateEvent');
     Route::delete('/{id}',[EventsController::class,'destroy'])->name('DeleteEvent');
-
+});
+Route::group(['prefix'=>'mechanics'],function(){
+    Route::get('/',[MechanicsController::class,'index'])->name('mechanics');
+    Route::get('/create',[MechanicsController::class,'create'])->name('createMechanics');
+    Route::post('/',[MechanicsController::class,'store'])->name('StoreMechanics');
+//     Route::get('/{id}',[MechanicsController::class,'show'])->name('ShowMechanics');
+    Route::get('/{id}/edit',[MechanicsController::class,'edit'])->name('EditMechanics');
+    Route::patch('/{id}',[MechanicsController::class,'update'])->name('UpdateMechanics');
+    Route::delete('/{id}',[MechanicsController::class,'destroy'])->name('DeleteMechanics');
 });
 
 

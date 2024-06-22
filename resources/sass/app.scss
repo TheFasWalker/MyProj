@@ -78,6 +78,20 @@ img{
 .customDangerButton:hover{
     @apply text-white bg-[#ff0f0f]
 }
-// .active .header-menu{
-//     @apply border
-// }
+
+
+.trashButton{
+    @apply h-9 w-9 p-1;
+    &:hover{
+
+        @apply bg-red-600
+    }
+}
+
+.editlink{
+    @apply h-9 w-9 p-1;
+    &:hover{
+
+        @apply bg-green-600
+    }
+}
