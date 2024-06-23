@@ -16,8 +16,18 @@ const headerMenu = () => {
         })
     }
 }
+function showMoreLocationInfo() {
+    const showMoreButtons = document.querySelectorAll('.js-location-show-more')
+    showMoreButtons.forEach((locationButton) => {
+        locationButton.addEventListener('click', function () {
+
+            locationButton.parentNode.parentNode.parentNode.querySelector('.js-show-mire-info').classList.toggle('hidden')
+        })
+    })
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     console.log('connected')
     headerMenu()
+    showMoreLocationInfo()
  })
