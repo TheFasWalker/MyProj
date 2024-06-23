@@ -55,17 +55,22 @@ class EventsController extends Controller
         if(isset($data['mechanics'])){
             $mechanicsIds = $data['mechanics'];
             unset($data['mechanics']);
-        }
-        if(isset($data['previewPhoto'])){
-            $photoLink = Storage::disk('local')->put('public/images/events', $data['previewPhoto']);
-            $photoLink =preg_replace("/public\//", "", $photoLink);
-            $data['previewPhoto'] =$photoLink;
-
-        }
-        $event = Event::firstOrCreate($data);
-        if(isset($data['mechanics'])){
+            if(isset($data['previewPhoto'])){
+                $photoLink = Storage::disk('local')->put('public/images/events', $data['previewPhoto']);
+                $photoLink =preg_replace("/public\//", "", $photoLink);
+                $data['previewPhoto'] =$photoLink;
+            }
+            $event = Event::firstOrCreate($data);
             $event->mechanics()->attach($mechanicsIds);
+        }else{
+            if(isset($data['previewPhoto'])){
+                $photoLink = Storage::disk('local')->put('public/images/events', $data['previewPhoto']);
+                $photoLink =preg_replace("/public\//", "", $photoLink);
+                $data['previewPhoto'] =$photoLink;
+            }
+            Event::firstOrCreate($data);
         }
+
     return redirect()->route('events');
 
     }
@@ -76,6 +81,7 @@ class EventsController extends Controller
     public function show(string $id)
     {
         $eventData = Event::find($id);
+
         return view('Pages.EventsPages.EventPage', compact('eventData'));
     }
 
@@ -98,26 +104,20 @@ class EventsController extends Controller
     public function update(UpdateRequest $request, string $id)
     {
 
-            $data = $request->validated();
-            if(isset($data['mechanics'])){
-                $mechanicsIds = $data['mechanics'];
-                unset($data['mechanics']);
-            }
+        $data = $request->validated();
 
-            if(isset($data['previewPhoto'])){
-                $photoLink = Storage::disk('local')->put('public/images/events', $data['previewPhoto']);
-                $photoLink =preg_replace("/public\//", "", $photoLink);
-                $data['previewPhoto'] =$photoLink;
+        $mechanicsIds = $data['mechanics'];
+        unset($data['mechanics']);
+        if(isset($data['previewPhoto'])){
+            $photoLink = Storage::disk('local')->put('public/images/events', $data['previewPhoto']);
+            $photoLink =preg_replace("/public\//", "", $photoLink);
+            $data['previewPhoto'] =$photoLink;
 
-            }
+        }
+        $event = Event::find($id);
+        $event->update($data);
 
-            $event = Event::find($id)->update($data);
-            if(isset($data['mechanics'])){
-                $event->mechanics()->sync($mechanicsIds);
-            }
-
-            return redirect()->route('events');
-
+        $event->mechanics()->sync($mechanicsIds);
 
         return redirect()->route('ShowEvent', $id );
     }

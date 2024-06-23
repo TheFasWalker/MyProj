@@ -89,21 +89,7 @@
                             @endforeach
                         </select>
                     </label>
-                    <label class="flex flex-col">
-                        <span>Механики</span>
-                    <select name="mechanics[]" multiple="multiple" placeholder="Выберите механики" >
-                        @foreach ($mechanics as $mechanicsItem )
-                            <option value="{{$mechanicsItem->id}}"
-                                title="{{$mechanicsItem->description}}"
-                                {{is_array( $eventItem->mechanics->pluck('id')->toArray()) && in_array($mechanicsItem->id , $eventItem->mechanics->pluck('id')->toArray()  ) ? 'selected' : ''}}
-                                >
-                                {{$mechanicsItem->name}}
-                            </option>
 
-                        @endforeach
-
-                    </select>
-                    </label>
 
 
 
@@ -111,48 +97,22 @@
                 </div>
 
                 <fieldset class="border p-4  flex flex-col gap-2 ">
-                    <x-general.ui.inputCheckbox
-                    description='Жилой лагерь - штурмуемый'
-                    title="Штурмуемый Лагерь"
-                    name="liveCamp"
-                    :value='$eventItem->liveCamp'
-                    />
-                    <x-general.ui.inputCheckbox
-                    description='Игровая техника для доставки игроков по полигону'
-                    title="Дехника для ротации"
-                    name="rotationTechnique"
-                    :value='$eventItem->rotationTechnique'
-                    />
-                    <x-general.ui.inputCheckbox
-                    description='Боевая армейская техника'
-                    title="Техника для усиления"
-                    name="warTechnique"
-                    :value='$eventItem->warTechnique'
-                    />
-                    <x-general.ui.inputCheckbox
-                    description='Личная игровая техника'
-                    title="Использование игроками своей техники"
-                    name="peoplesCars"
-                    :value='$eventItem->peoplesCars'
-                    />
-                    <x-general.ui.inputCheckbox
-                    description='Игравая медицина'
-                    title="Сценарии подразумевающие медицину"
-                    name="medicine"
-                    :value='$eventItem->medicine'
-                    />
-                    <x-general.ui.inputCheckbox
-                    description='Использование растяжек, дистанционных мин и прочей инженерной штуки'
-                    title="Инженерная подготовка"
-                    name="engeneer"
-                    :value='$eventItem->engeneer'
-                    />
-                    <x-general.ui.inputCheckbox
-                    description='Ограничения по тюнингу'
-                    title="SQB"
-                    name="sqb"
-                    :value='$eventItem->sqb'
-                    />
+                    <label class="flex flex-col">
+                        <span>Механики</span>
+                        <select name="mechanics[]" multiple="multiple" placeholder="Выберите механики" >
+
+                            @foreach ($mechanics as $mechanicsItem )
+                                <option value="{{$mechanicsItem->id}}"
+                                    title="{{$mechanicsItem->description}}"
+                                    {{is_array( $eventItem->mechanics->pluck('id')->toArray()) && in_array($mechanicsItem->id , $eventItem->mechanics->pluck('id')->toArray()  ) ? 'selected' : ''}}
+                                    >
+                                    {{$mechanicsItem->name}}
+                                </option>
+
+                            @endforeach
+
+                        </select>
+                    </label>
                     <label class="flex flex-col gap-3" >
                         <span>Полигон</span>
                         <select class="form-select" aria-label="Default select example" name="location_id">

@@ -19,18 +19,16 @@
             </ul>
             <h2 class="mx-auto mb-4">Механики мероприятия:</h2>
             <ul>
-            @if (isset($eventData->rotationTechnique) or isset($eventData->warTechnique) or isset($eventData->peoplesCars) or isset($eventData->medicine) or isset($eventData->engeneer) or isset($eventData->sqb) or isset($eventData->liveCamp))
-                    <?= isset($eventData->rotationTechnique) ? '<li>Техника для ротации</li>' : ''?>
-                    <?= isset($eventData->warTechnique) ? '<li>Военная техника</li>' : ''?>
-                    <?= isset($eventData->peoplesCars) ? '<li>Использование техники участников</li>' : ''?>
-                    <?= isset($eventData->medicine) ? '<li>Медицинские механики</li>' : ''?>
-                    <?= isset($eventData->engeneer) ? '<li>Использование инженерки</li>' : ''?>
-                    <?= isset($eventData->sqb) ? '<li>SQB сценарий</li>' : ''?>
-                    <?= isset($eventData->liveCamp) ? '<li>Жилой штурмуемый лагерь</li>' : ''?>
 
-            @else
-                <li>Особые механики отсутствуют</li>
-            @endif
+                @if (count($eventData->mechanics))
+                    @foreach ($eventData->mechanics as $eventMechanics)
+                    <li title="{{$eventMechanics->description}}">{{$eventMechanics->name}}</li>
+
+                    @endforeach
+                @else
+                <span>Особые механики отсутствуют</span>
+                @endif
+
         </ul>
 
         </div>

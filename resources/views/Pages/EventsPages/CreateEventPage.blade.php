@@ -79,42 +79,7 @@
 
 
                 <fieldset class="border p-4  flex flex-col gap-2 ">
-                    <x-general.ui.inputCheckbox
-                    description='Жилой лагерь - штурмуемый'
-                    title="Штурмуемый Лагерь"
-                    name="liveCamp"
-                    />
-                    <x-general.ui.inputCheckbox
-                    description='Игровая техника для доставки игроков по полигону'
-                    title="Дехника для ротации"
-                    name="rotationTechnique"
 
-                    />
-                    <x-general.ui.inputCheckbox
-                    description='Боевая армейская техника'
-                    title="Техника для усиления"
-                    name="warTechnique"
-                    />
-                    <x-general.ui.inputCheckbox
-                    description='Личная игровая техника'
-                    title="Использование игроками своей техники"
-                    name="peoplesCars"
-                    />
-                    <x-general.ui.inputCheckbox
-                    description='Игравая медицина'
-                    title="Сценарии подразумевающие медицину"
-                    name="medicine"
-                    />
-                    <x-general.ui.inputCheckbox
-                    description='Использование растяжек, дистанционных мин и прочей инженерной штуки'
-                    title="Инженерная подготовка"
-                    name="engeneer"
-                    />
-                    <x-general.ui.inputCheckbox
-                    description='Ограничения по тюнингу'
-                    title="SQB"
-                    name="sqb"
-                    />
                 </fieldset>
                 <fieldset class="border p-4  flex flex-col gap-2 ">
                     <label class="flex flex-col gap-3" >
