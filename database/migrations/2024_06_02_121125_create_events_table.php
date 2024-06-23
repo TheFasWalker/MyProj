@@ -21,13 +21,7 @@ return new class extends Migration
             $table->date('dateStop')->nullable();
             $table->text('descriptionShort')->nullable();
             $table->text('script')->nullable();
-            $table->boolean('rotationTechnique')->nullable();
-            $table->boolean('warTechnique')->nullable();
-            $table->boolean('peoplesCars')->nullable();
-            $table->boolean('medicine')->nullable();
-            $table->boolean('engeneer')->nullable();
-            $table->boolean('sqb')->nullable();
-            $table->boolean('liveCamp')->nullable();
+
             $table->string('previewPhoto')->nullable();
 
             $table->unsignedBigInteger('organizator_id')->nullable();
