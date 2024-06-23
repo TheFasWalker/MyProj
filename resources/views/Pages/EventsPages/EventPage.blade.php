@@ -15,12 +15,11 @@
                 <?= isset($eventData->organizator_id) ? '<li>Организатор : <a href="' . route('ShowOrganizer', $eventData->organizator_id ). '"> ' . $eventData->orgName->orgGroupName . '</a> </li>' : ''?>
                 <?= isset($eventData->timeStart) ? '<li>Старт мероприятия : ' . $eventData->dateStart . ' '. $eventData->timeStart . '</li>' : ''?>
                 <?= isset($eventData->timeStart) ? '<li>Конец мероприятия : ' . $eventData->dateStop . ' '. $eventData->timeStop . '</li>' : ''?>
+                <?= isset($eventData->location) ? '<li> полигон : <a href="'. route('locations') .'">' . $eventData->location->name . '</a></li>' : '' ?>
             </ul>
             <h2 class="mx-auto mb-4">Механики мероприятия:</h2>
             <ul>
             @if (isset($eventData->rotationTechnique) or isset($eventData->warTechnique) or isset($eventData->peoplesCars) or isset($eventData->medicine) or isset($eventData->engeneer) or isset($eventData->sqb) or isset($eventData->liveCamp))
-
-
                     <?= isset($eventData->rotationTechnique) ? '<li>Техника для ротации</li>' : ''?>
                     <?= isset($eventData->warTechnique) ? '<li>Военная техника</li>' : ''?>
                     <?= isset($eventData->peoplesCars) ? '<li>Использование техники участников</li>' : ''?>

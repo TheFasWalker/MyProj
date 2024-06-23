@@ -25,8 +25,8 @@ class StoreRequest extends FormRequest
             'name'=>'required|string',
             'adress'=>'required|string',
             'description'=>'nullable|string',
-            'coordX'=>'numeric|nullable',
-            'coordY'=>'numeric|nullable'
+            'coordX'=>'nullable|numeric',
+            'coordY'=>'nullable|numeric'
         ];
     }
 }

@@ -77,32 +77,30 @@
                     </div>
                     <label class="flex flex-col gap-3" >
                         <span>Организатор</span>
-                    <select class="form-select" aria-label="Default select example" name="organizator_id">
-                        <option selected >Не выбран</option>
-                        @foreach ($orgs as $org )
-                            <option
-                            value="{{ $org->id }}"
-                            {{$eventItem->organizator_id == $org->id ? 'selected' : '' }}
-                            >
-                            {{ $org->orgGroupName }}
-                        </option>
-                        @endforeach
-                    </select>
+                        <select class="form-select" aria-label="Default select example" name="organizator_id">
+                            <option selected >Не выбран</option>
+                            @foreach ($orgs as $org )
+                                <option
+                                value="{{ $org->id }}"
+                                {{$eventItem->organizator_id == $org->id ? 'selected' : '' }}
+                                >
+                                {{ $org->orgGroupName }}
+                            </option>
+                            @endforeach
+                        </select>
                     </label>
-                    {{-- {{in_array($mechanicsItem->id , $eventItem->mechainics) ? 'selected' : ''}} --}}
-                    {{-- {{dd($eventItem->mechanics->pluck('id'))}} --}}
                     <label class="flex flex-col">
                         <span>Механики</span>
                     <select name="mechanics[]" multiple="multiple" placeholder="Выберите механики" >
                         @foreach ($mechanics as $mechanicsItem )
-                        <option value="{{$mechanicsItem->id}}"
-                            title="{{$mechanicsItem->description}}"
-                            {{is_array( $eventItem->mechanics->pluck('id')->toArray()) && in_array($mechanicsItem->id , $eventItem->mechanics->pluck('id')->toArray()  ) ? 'selected' : ''}}
-                            >
-                            {{$mechanicsItem->name}}
-                        </option>
+                            <option value="{{$mechanicsItem->id}}"
+                                title="{{$mechanicsItem->description}}"
+                                {{is_array( $eventItem->mechanics->pluck('id')->toArray()) && in_array($mechanicsItem->id , $eventItem->mechanics->pluck('id')->toArray()  ) ? 'selected' : ''}}
+                                >
+                                {{$mechanicsItem->name}}
+                            </option>
 
-                    @endforeach
+                        @endforeach
 
                     </select>
                     </label>
@@ -155,6 +153,20 @@
                     name="sqb"
                     :value='$eventItem->sqb'
                     />
+                    <label class="flex flex-col gap-3" >
+                        <span>Полигон</span>
+                        <select class="form-select" aria-label="Default select example" name="location_id">
+                            <option selected >Не выбран</option>
+                            @foreach ($locations as $location )
+                                <option
+                                value="{{ $location->id }}"
+                                {{$eventItem->location_id == $location->id ? 'selected' : '' }}
+                                >
+                                {{ $location->name }}
+                            </option>
+                            @endforeach
+                        </select>
+                    </label>
                 </fieldset>
                 <fieldset class="border p-4  flex flex-col gap-2 ">
                     <x-general.ui.inputFile

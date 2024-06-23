@@ -39,6 +39,7 @@
                     name='coordX'
                     type="number"
                     step="any"
+                    value='0.0'
                     />
                     <x-general.ui.input
                     title="Вторая координата"
@@ -47,6 +48,7 @@
                     name='coordY'
                     type="number"
                     step="any"
+                    value='0.0'
                     />
                 </div>
             </div>

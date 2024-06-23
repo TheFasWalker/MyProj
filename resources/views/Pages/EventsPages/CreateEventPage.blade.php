@@ -5,7 +5,7 @@
     <div class="container">
         <form action="{{ route('StoreEvent') }}" method="POST" class="pt-5 flex flex-col gap-7" enctype="multipart/form-data">
             @csrf
-
+            {{-- {{dd($locations)}} --}}
             <h1 class="text-5xl pb-[10px]">Создание события</h1>
             <div class="grid grid-cols-[350px_350px_1fr] gap-5">
                 <div class="flex flex-col gap-3">
@@ -124,8 +124,15 @@
                         @foreach ($orgs as $org )
                             <option value="{{ $org->id }}">{{ $org->orgGroupName }}</option>
                         @endforeach
-
-
+                      </select>
+                    </label>
+                    <label class="flex flex-col gap-3" >
+                        <span>Полигон</span>
+                    <select class="form-select" aria-label="Default select example" name="location_id">
+                        <option selected value="0">Не выбран</option>
+                        @foreach ($locations as $location )
+                            <option value="{{ $location->id }}" title='{{$location->adress}}'>{{ $location->name }}</option>
+                        @endforeach
                       </select>
                     </label>
                     <label class="flex flex-col">

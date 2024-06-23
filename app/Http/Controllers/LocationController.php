@@ -31,14 +31,9 @@ class LocationController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        try{
             $data= $request->validated();
             Location::firstOrCreate($data);
-
-        }catch (\Exception $exception){
-            abort(404);
-        }
-        return redirect()->route('locations');
+            return redirect()->route('locations');
     }
 
     /**

@@ -40,7 +40,8 @@ class UpdateRequest extends FormRequest
             'previewPhoto'=>'file|nullable',
             'organizator_id'=>'nullable|exists:organizers,id',
             'mechanics'=>'array|nullable',
-            'mechanics.*'=>'nullable|integer|exists:mechanics,id'
+            'mechanics.*'=>'nullable|integer|exists:mechanics,id',
+            'location_id'=>'nullable'
 
 
         ];

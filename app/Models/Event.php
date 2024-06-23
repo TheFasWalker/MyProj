@@ -21,4 +21,7 @@ class Event extends Model
     public function mechanics(){
         return $this->belongsToMany(Mechanics::class,'event_mechanics','event_id','mechanics_id');
     }
+    public function location(){
+        return $this->belongsTo(Location::class , 'location_id','id');
+    }
 }
