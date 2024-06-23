@@ -21,8 +21,9 @@
                 {{-- <a class="customButton {{(request()->segment(1) == 'users') ? 'active' : ''}}" href="{{route('users')}}">Наши участники</a> --}}
                 <a class="customButton {{(request()->segment(1) == 'events') ? 'active' : ''}}" href="{{route('events')}}">События</a>
                 <a class="customButton {{(request()->segment(1) == 'organizers') ? 'active' : ''}}" href="{{route('organizers')}}">Организаторы</a>
-                <a class="customButton" href="{{route('CreateOrganizer')}}">Новый организатор</a>
-                <a class="customButton" href="{{route('createEvent')}}">new event</a>
+                <a class="customButton" href="{{route('locations')}}">Полигоны</a>
+                <a class="customButton" href="{{route('mechanics')}}">механики</a>
+
             </nav>
             <div class="ml-auto relative">
                 <button class="header-menu js-header-menu" title="Личный кабинет">
