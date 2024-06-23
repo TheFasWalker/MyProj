@@ -89,6 +89,25 @@
                         @endforeach
                     </select>
                     </label>
+                    {{-- {{in_array($mechanicsItem->id , $eventItem->mechainics) ? 'selected' : ''}} --}}
+                    {{-- {{dd($eventItem->mechanics->pluck('id'))}} --}}
+                    <label class="flex flex-col">
+                        <span>Механики</span>
+                    <select name="mechanics[]" multiple="multiple" placeholder="Выберите механики" >
+                        @foreach ($mechanics as $mechanicsItem )
+                        <option value="{{$mechanicsItem->id}}"
+                            title="{{$mechanicsItem->description}}"
+                            {{is_array( $eventItem->mechanics->pluck('id')->toArray()) && in_array($mechanicsItem->id , $eventItem->mechanics->pluck('id')->toArray()  ) ? 'selected' : ''}}
+                            >
+                            {{$mechanicsItem->name}}
+                        </option>
+
+                    @endforeach
+
+                    </select>
+                    </label>
+
+
 
 
                 </div>

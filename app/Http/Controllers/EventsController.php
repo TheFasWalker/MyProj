@@ -49,25 +49,25 @@ class EventsController extends Controller
      */
     public function store(StoreRequest $request)
     {
-
+    try {
         $data = $request->validated();
-
         $mechanicsIds = $data['mechanics'];
-        // dd($data);
         unset($data['mechanics']);
-
-
         if(isset($data['previewPhoto'])){
             $photoLink = Storage::disk('local')->put('public/images/events', $data['previewPhoto']);
             $photoLink =preg_replace("/public\//", "", $photoLink);
             $data['previewPhoto'] =$photoLink;
 
         }
-        // dd($data);
         $event = Event::firstOrCreate($data);
 
         $event->mechanics()->attach($mechanicsIds);
-        return redirect()->route('events');
+
+    }catch (\Exception $exception){
+        abort(404);
+    }
+    return redirect()->route('events');
+
     }
 
     /**
@@ -86,7 +86,9 @@ class EventsController extends Controller
     {
         $orgs= Organizer::all();
         $eventItem = Event::find($id);
-        return view('Pages.EventsPages.EditEventPage', compact('eventItem','orgs') );
+        $mechanics = Mechanics::all();
+        // dd($eventItem->mechanics);
+        return view('Pages.EventsPages.EditEventPage', compact('eventItem','orgs','mechanics') );
     }
 
     /**
@@ -94,13 +96,24 @@ class EventsController extends Controller
      */
     public function update(UpdateRequest $request, string $id)
     {
-        $data = $request->validated();
-        if(isset($data['previewPhoto'])){
-            $photoLink = Storage::disk('local')->put('public/images/events', $data['previewPhoto']);
-            $photoLink =preg_replace("/public\//", "", $photoLink);
-            $data['previewPhoto'] =$photoLink;
+        try {
+            $data = $request->validated();
+            $mechanicsIds = $data['mechanics'];
+            unset($data['mechanics']);
+            if(isset($data['previewPhoto'])){
+                $photoLink = Storage::disk('local')->put('public/images/events', $data['previewPhoto']);
+                $photoLink =preg_replace("/public\//", "", $photoLink);
+                $data['previewPhoto'] =$photoLink;
+
+            }
+            $event = Event::firstOrCreate($data);
+            Event::find($id)->update($data);
+            $event->mechanics()->sync($mechanicsIds);
+            return redirect()->route('events');
+        }catch (\Exception $exception){
+            abort(404);
         }
-        Event::find($id)->update($data);
+
         return redirect()->route('ShowEvent', $id );
     }
 
