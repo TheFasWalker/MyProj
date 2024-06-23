@@ -77,6 +77,7 @@
 
                 </div>
 
+
                 <fieldset class="border p-4  flex flex-col gap-2 ">
                     <x-general.ui.inputCheckbox
                     description='Жилой лагерь - штурмуемый'
@@ -126,6 +127,16 @@
 
 
                       </select>
+                    </label>
+                    <label class="flex flex-col">
+                        <span>Механики</span>
+                    <select name="mechanics[]" multiple="multiple" placeholder="Выберите механики" >
+                        @foreach ($mechanics as $mechanicsItem )
+                        <option value="{{$mechanicsItem->id}}" title="{{$mechanicsItem->description}}">{{$mechanicsItem->name}}</option>
+
+                    @endforeach
+
+                    </select>
                     </label>
                 </fieldset>
             </div>

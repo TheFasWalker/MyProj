@@ -17,4 +17,8 @@ class Event extends Model
     public function orgName(){
         return $this->belongsTo(Organizer::class ,'organizator_id','id');
     }
+
+    public function mechanics(){
+        return $this->belongsToMany(Mechanics::class,'event_mechanics','event_id','mechanics_id');
+    }
 }

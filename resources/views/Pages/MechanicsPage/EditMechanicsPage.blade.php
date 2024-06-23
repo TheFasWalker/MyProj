@@ -38,7 +38,7 @@
             <button type="submit" form='edit' class="customButton">Сохранить</button>
             <button type="submit" form="delete" class="customDangerButton">Удалить</button>
         </div>
-        <form action="{{route('DeleteMechanics', $dataElem->id)}}" id='delete' method="POST">
+        <form action="{{route('DeleteMechanics', $data->id)}}" id='delete' method="POST">
             @csrf
             @method('DELETE')
         </form>

@@ -8,6 +8,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Events\StoreRequest;
 use App\Http\Requests\Events\UpdateRequest;
 use App\Models\Event;
+use App\Models\Mechanics;
 use App\Models\Organizer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -28,9 +29,9 @@ class EventsController extends Controller
      */
     public function index()
     {
-
+        $mechanics = Mechanics::all();
         $eventList = Event::all();
-        return view('Pages.EventsPages.EventsIndexPage',compact('eventList'));
+        return view('Pages.EventsPages.EventsIndexPage',compact('eventList', 'mechanics'));
     }
 
     /**
@@ -38,8 +39,9 @@ class EventsController extends Controller
      */
     public function create()
     {
+        $mechanics = Mechanics::all();
         $orgs = Organizer::all();
-        return view('Pages.EventsPages.CreateEventPage',compact('orgs'));
+        return view('Pages.EventsPages.CreateEventPage',compact('orgs', 'mechanics'));
     }
 
     /**
@@ -49,14 +51,22 @@ class EventsController extends Controller
     {
 
         $data = $request->validated();
+
+        $mechanicsIds = $data['mechanics'];
+        // dd($data);
+        unset($data['mechanics']);
+
+
         if(isset($data['previewPhoto'])){
             $photoLink = Storage::disk('local')->put('public/images/events', $data['previewPhoto']);
             $photoLink =preg_replace("/public\//", "", $photoLink);
             $data['previewPhoto'] =$photoLink;
 
         }
+        // dd($data);
+        $event = Event::firstOrCreate($data);
 
-        Event::firstOrCreate($data);
+        $event->mechanics()->attach($mechanicsIds);
         return redirect()->route('events');
     }
 

@@ -38,8 +38,9 @@ class StoreRequest extends FormRequest
             'descriptionShort'=>'string|nullable',
             'script'=>'string|nullable',
             'previewPhoto'=>'file|nullable',
-            'organizator_id'=>'exists:organizers,id|nullable'
-
+            'organizator_id'=>'nullable|exists:organizers,id',
+            'mechanics'=>'array|nullable',
+            'mechanics.*'=>'nullable|integer|exists:mechanics,id'
         ];
     }
 }
