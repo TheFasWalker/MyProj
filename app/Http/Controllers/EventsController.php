@@ -13,17 +13,20 @@ use App\Models\Mechanics;
 use App\Models\Organizer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Services\EventService;
 
 class EventsController extends Controller
 {
+    private $eventService;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(EventService $eventService)
     {
         $this->middleware('auth');
+        $this->eventService = $eventService;
     }
     /**
      * Display a listing of the resource.
@@ -52,49 +55,32 @@ class EventsController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
-        if(isset($data['mechanics'])){
-            $mechanicsIds = $data['mechanics'];
-            unset($data['mechanics']);
-            if(isset($data['previewPhoto'])){
-                $photoLink = Storage::disk('local')->put('public/images/events', $data['previewPhoto']);
-                $photoLink =preg_replace("/public\//", "", $photoLink);
-                $data['previewPhoto'] =$photoLink;
-            }
-            $event = Event::firstOrCreate($data);
-            $event->mechanics()->attach($mechanicsIds);
-        }else{
-            if(isset($data['previewPhoto'])){
-                $photoLink = Storage::disk('local')->put('public/images/events', $data['previewPhoto']);
-                $photoLink =preg_replace("/public\//", "", $photoLink);
-                $data['previewPhoto'] =$photoLink;
-            }
-            Event::firstOrCreate($data);
-        }
-
-    return redirect()->route('events');
+        $this->eventService->createEvent($data);
+        return redirect()->route('events');
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Event $id)
     {
         $eventData = Event::find($id);
-
+        // dd($eventData[0]->name);
         return view('Pages.EventsPages.EventPage', compact('eventData'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Event $id)
     {
         $orgs= Organizer::all();
         $eventItem = Event::find($id);
         $mechanics = Mechanics::all();
         $locations = Location::all();
         // dd($eventItem->mechanics);
+
         return view('Pages.EventsPages.EditEventPage', compact('eventItem','orgs','mechanics','locations') );
     }
 
@@ -106,19 +92,7 @@ class EventsController extends Controller
 
         $data = $request->validated();
 
-        $mechanicsIds = $data['mechanics'];
-        unset($data['mechanics']);
-        if(isset($data['previewPhoto'])){
-            $photoLink = Storage::disk('local')->put('public/images/events', $data['previewPhoto']);
-            $photoLink =preg_replace("/public\//", "", $photoLink);
-            $data['previewPhoto'] =$photoLink;
-
-        }
-        $event = Event::find($id);
-        $event->update($data);
-
-        $event->mechanics()->sync($mechanicsIds);
-
+        $this->eventService->updateEvent($id, $data);
         return redirect()->route('ShowEvent', $id );
     }
 

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form action="{{ route('UpdateEvent', $eventItem->id) }}" method="POST" class="pt-5 flex flex-col gap-7" id='edit' enctype="multipart/form-data">
+        <form action="{{ route('UpdateEvent', $eventItem[0]->id) }}" method="POST" class="pt-5 flex flex-col gap-7" id='edit' enctype="multipart/form-data">
             @csrf
             @method('PATCH')
 
@@ -16,7 +16,7 @@
                         description='Название будет видно всем'
                         name='name'
                         inputjsclass=''
-                        :value='$eventItem->name'
+                        :value='$eventItem[0]->name'
 
                     />
                     @error('orgGroupName')
@@ -28,7 +28,7 @@
                         placeholder='Ссылка на мероприятие'
                         description='Ссылка на мероприятие на стороннем ресурсе'
                         name='eventLink'
-                        :value='$eventItem->eventLink'
+                        :value='$eventItem[0]->eventLink'
                     />
                     <div class="grid grid-cols-2 gap-8">
                         <div class="flex flex-col">
@@ -44,13 +44,13 @@
                                     type="time"
                                     class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 
-                                    value="{{$eventItem->timeStart}}"
+                                    value="{{$eventItem[0]->timeStart}}"
                                     name='timeStart'
                                     />
                                 </div>
                             </label>
                             <input
-                            value="{{$eventItem->dateStart}}" type="date" name="dateStart" id="" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+                            value="{{$eventItem[0]->dateStart}}" type="date" name="dateStart" id="" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
                         </div>
                         <div class="flex flex-col">
                             <span>Окончание</span>
@@ -64,13 +64,13 @@
                                     <input
                                     type="time"
                                     class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    value="{{$eventItem->timeStop}}"
+                                    value="{{$eventItem[0]->timeStop}}"
                                     name='timeStop'
                                     />
                                 </div>
                             </label>
 
-                            <input value="{{$eventItem->dateStop}}" type="date" name="dateStop"  class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+                            <input value="{{$eventItem[0]->dateStop}}" type="date" name="dateStop"  class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
                         </div>
 
 
@@ -82,7 +82,7 @@
                             @foreach ($orgs as $org )
                                 <option
                                 value="{{ $org->id }}"
-                                {{$eventItem->organizator_id == $org->id ? 'selected' : '' }}
+                                {{$eventItem[0]->organizator_id == $org->id ? 'selected' : '' }}
                                 >
                                 {{ $org->orgGroupName }}
                             </option>
@@ -104,7 +104,7 @@
                             @foreach ($mechanics as $mechanicsItem )
                                 <option value="{{$mechanicsItem->id}}"
                                     title="{{$mechanicsItem->description}}"
-                                    {{is_array( $eventItem->mechanics->pluck('id')->toArray()) && in_array($mechanicsItem->id , $eventItem->mechanics->pluck('id')->toArray()  ) ? 'selected' : ''}}
+                                    {{is_array( $eventItem[0]->mechanics->pluck('id')->toArray()) && in_array($mechanicsItem->id , $eventItem[0]->mechanics->pluck('id')->toArray()  ) ? 'selected' : ''}}
                                     >
                                     {{$mechanicsItem->name}}
                                 </option>
@@ -120,7 +120,7 @@
                             @foreach ($locations as $location )
                                 <option
                                 value="{{ $location->id }}"
-                                {{$eventItem->location_id == $location->id ? 'selected' : '' }}
+                                {{$eventItem[0]->location_id == $location->id ? 'selected' : '' }}
                                 >
                                 {{ $location->name }}
                             </option>
@@ -132,7 +132,7 @@
                     <x-general.ui.inputFile
                     title="Заменить указанное фото"
                     name="previewPhoto"
-                    :value='$eventItem->previewPhoto' />
+                    :value='$eventItem[0]->previewPhoto' />
 
                 </fieldset>
             </div>
@@ -142,7 +142,7 @@
                     title='Общее описание'
                     placeholder='Краткое описание'
                     id='shortDescription'
-                    :value='$eventItem->descriptionShort'
+                    :value='$eventItem[0]->descriptionShort'
                 />
                 <x-general.ui.inputTextfield
                     description='Сценарий'
@@ -150,13 +150,13 @@
                     title='Сценарий'
                     placeholder='Сценарий мероприятия'
                     id='script'
-                     :value='$eventItem->script'
+                     :value='$eventItem[0]->script'
                 />
         </form>
         <div class="grid grid-cols-2 gap-3">
             <button class="customButton" type="submit" form="edit">Обновить</button>
             <button class="customDangerButton" type="submit" form="delete"> Удалить</button>
-            <form action="{{ route ('DeleteEvent', $eventItem->id)}}" id='delete' method="POST">
+            <form action="{{ route ('DeleteEvent', $eventItem[0]->id)}}" id='delete' method="POST">
                 @csrf
                 @method('DELETE')
 
