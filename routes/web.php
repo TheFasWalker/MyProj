@@ -3,6 +3,7 @@
 use App\Http\Controllers\EventsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LkController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\OrganisersController;
 use App\Http\Controllers\MechanicsController;
@@ -49,6 +50,9 @@ Route::group(['prefix'=>'locations'],function(){
     Route::get('/{id}/edit',[LocationController::class,'edit'])->name('EditLocation');
     Route::patch('/{id}',[LocationController::class,'update'])->name('UpdateLocation');
     Route::delete('/{id}',[LocationController::class,'destroy'])->name('DeleteLocation');
+});
+Route::group(['prefix'=>'lk'],function(){
+    Route::get('/',[LkController::class, 'index'])->name('lk');
 });
 
 

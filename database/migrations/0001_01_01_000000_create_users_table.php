@@ -18,20 +18,23 @@ return new class extends Migration
             $table->string('family',100)->nullable();
             $table->date('birthday')->nullable();
             $table->string('tel',12)->nullable();
-            $table->string('extraContacts',255)->nullable();
+            $table->string('extra_contacts',255)->nullable();
             $table->string('contraindications',255)->nullable();
             $table->string('allergies',255)->nullable();
             $table->text('additional')->nullable();
             $table->text('about')->nullable();
-            $table->string('email')->unique();
+            $table->string('email',255)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('nick_name', 100);
+            $table->string('link_vk',255)->nullable();
+            $table->string('link_tg',255)->nullable();
 
             $table->string('photo',255)->nullable();
             $table->string('number',100)->nullable();
             $table->date('burthday')->nullable();
-            $table->string('userId',255)->nullable();
-            $table->string('driverLicense')->nullable();
+
+            $table->string('driver_license')->nullable();
             $table->boolean('auto')->nullable();
             $table->rememberToken();
 
