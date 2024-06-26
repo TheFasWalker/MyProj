@@ -13,20 +13,12 @@ return new class extends Migration
     {
         Schema::create('organizers', function (Blueprint $table) {
             $table->id();
-            $table->string('orgGroupName');
-            $table->string('orgGroupLink')->nullable();
-            $table->string('orgName')->nullable();
-            $table->string('orgLink')->nullable();
-            $table->string('orgphoto')->nullable();
-            $table->boolean('rotationTechnique')->nullable();
-            $table->boolean('warTechnique')->nullable();
-            $table->boolean('peoplesCars')->nullable();
-            $table->boolean('medicine')->nullable();
-            $table->boolean('engeneer')->nullable();
-            $table->longText('description')->nullable();
-
-
-
+            $table->string('orgGroupName',255);
+            $table->string('orgGroupLink',255)->nullable();
+            $table->string('orgName',255)->nullable();
+            $table->string('orgLink',255)->nullable();
+            $table->string('orgphoto',255)->nullable();
+            $table->text('description')->nullable();
 
             $table->timestamps();
         });

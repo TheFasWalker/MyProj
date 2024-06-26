@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('event_mechanics', function (Blueprint $table) {
             $table->id();
-            $table->softDeletes();
+
 
             $table->unsignedBigInteger('event_id');
             $table->unsignedBigInteger('mechanics_id');
 
-            $table->timestamps();
+
 
             //idx
             $table->index('event_id', 'event_mechanics_event_idx');
@@ -27,6 +27,9 @@ return new class extends Migration
             //fk
             $table->foreign('event_id', 'event_mechanics_event_fk')->on('events')->references('id');
             $table->foreign('mechanics_id','event_mechanics_mechanics_fk')->on('mechanics')->references('id');
+
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

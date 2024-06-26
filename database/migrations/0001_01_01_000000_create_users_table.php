@@ -13,26 +13,25 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('surname')->nullable();
-            $table->string('family')->nullable();
-            $table->string('user_num')->nullable();
+            $table->string('name',100);
+            $table->string('surname',100)->nullable();
+            $table->string('family',100)->nullable();
             $table->date('birthday')->nullable();
-            $table->string('tel')->nullable();
-            $table->string('extraContacts')->nullable();
-            $table->string('contraindications')->nullable();
-            $table->string('allergies')->nullable();
+            $table->string('tel',12)->nullable();
+            $table->string('extraContacts',255)->nullable();
+            $table->string('contraindications',255)->nullable();
+            $table->string('allergies',255)->nullable();
             $table->text('additional')->nullable();
             $table->text('about')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
 
-            $table->text('photo')->nullable();
-            $table->string('number')->nullable();
+            $table->string('photo',255)->nullable();
+            $table->string('number',100)->nullable();
             $table->date('burthday')->nullable();
-            $table->string('userId')->nullable();
-            $table->text('driverLicense')->nullable();
+            $table->string('userId',255)->nullable();
+            $table->string('driverLicense')->nullable();
             $table->boolean('auto')->nullable();
             $table->rememberToken();
 

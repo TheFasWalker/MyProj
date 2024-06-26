@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->float('coordX');
-            $table->float('coordY');
-            $table->string('adress');
-            $table->text('description');
-            $table->timestamps();
+            $table->float('coordX',2,6);
+            $table->float('coordY',2,6);
+            $table->string('adress',255);
+            $table->text('description',255);
             $table->softDeletes();
+            $table->timestamps();
+
         });
     }
 
