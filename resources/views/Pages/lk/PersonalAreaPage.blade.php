@@ -2,8 +2,12 @@
 
 @section('content')
     <div class=" container">
-        <h1 class="text-5xl pb-[10px]">Личные ланные</h1>
-        {{-- {{dd($userData)}} --}}
+        <div class="flex w-full justify-between">
+            <h1 class="text-5xl pb-[10px]">Личные ланные</h1>
+            <a class="editlink" href="{{route('EditLk')}}">
+                <img src="{{asset('img/icons/edit.png')}}" alt="">
+            </a>
+        </div>
         <div class="grid grid-cols-2 w-full">
             @if (isset($userData->photo))
                 <img src="{{$userData->photo}}" alt="">

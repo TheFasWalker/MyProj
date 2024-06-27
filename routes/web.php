@@ -14,8 +14,6 @@ use App\Http\Controllers\LocationController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/users', [UsersController::class, 'index'])->name('users');
-// Route::get('/users/01' , [UserController::class, 'index'])->name('user01');
-// Route::get('/lk', [PersonalAreaController::class, 'index'])->name('lk');
 // Route::get('/lk/edit', [PersonalAreaController::class, 'edit'])->name('editlk');
 Route::group(['prefix'=>'organizers'],function (){
     Route::get('/', [OrganisersController::class, 'index'])->name('organizers');
@@ -53,6 +51,7 @@ Route::group(['prefix'=>'locations'],function(){
 });
 Route::group(['prefix'=>'lk'],function(){
     Route::get('/',[LkController::class, 'index'])->name('lk');
+    Route::get('/edit',[LkController::class, 'edit'])->name('EditLk');
 });
 
 
