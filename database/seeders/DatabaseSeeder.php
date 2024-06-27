@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserDatabaseSeeder::class,
             MechanicsDatabaseSeeder::class,
-            LocationDatabaseSeeder::class
+            LocationDatabaseSeeder::class,
+            OrganizatorDatabaseSeeder::class
         ]);
     }
 }

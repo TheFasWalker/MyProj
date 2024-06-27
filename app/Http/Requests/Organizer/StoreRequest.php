@@ -28,16 +28,11 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'orgGroupName'=>'required|string',
-            'orgGroupLink'=>'string|nullable',
-            'orgName'=>'string|nullable',
-            'orgLink'=>'string|nullable',
-            'orgphoto'=>'file|nullable',
-            'rotationTechnique'=>'nullable',
-            'warTechnique'=>'nullable',
-            'peoplesCars'=>'nullable',
-            'medicine'=>'nullable',
-            'engeneer'=>'nullable',
+            'org_group_name'=>'required|string',
+            'org_group_link'=>'string|nullable',
+            'org_name'=>'string|nullable',
+            'org_link'=>'string|nullable',
+            'org_group_photo'=>'file|nullable',
             'description'=>'string|nullable'
         ];
     }
