@@ -13,10 +13,14 @@ class UserDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::firstOrCreate([
-            'name'=>'admin',
-            'email'=>'admin@admin.admin',
-            'password' => bcrypt('123456789')
-        ]);
+        if(! User::find('admin@admin.admin')){
+            User::firstOrCreate([
+                'name'=>'admin',
+                'email'=>'admin@admin.admin',
+                'password' => bcrypt('123456789'),
+                'about'=>'asdfasd as df as asd fas df asdf asdf as afd'
+            ]);
+        };
+
     }
 }

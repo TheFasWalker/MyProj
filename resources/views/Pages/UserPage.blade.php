@@ -10,7 +10,7 @@
                     <li>Имя:{{$name}} </li>
                     <li>Фамилия :{{$surname}}</li>
                     <li>Отчество:{{$family}}</li>
-                    <li>Дата рождения:{{$burthday}}</li>
+                    <li>Дата рождения:{{$birthday}}</li>
                     <li>Права:{{$driverLicense}} </li>
                     <?=(isset($auto) && $auto == true) ? '<li>Имеется авто</li>' : ''?>
                 </ul>

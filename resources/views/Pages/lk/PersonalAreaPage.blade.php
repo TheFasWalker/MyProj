@@ -23,7 +23,7 @@
                 <span>Контактный номер телефона:{{isset($userData->tel) ? $userData->tel : 'не указан'}}</span>
                 <span><?= isset($userData->auto) && $userData->auto != null ? '<span>Имеется автомобиль</span>' : 'Автотранспорт отсутствует'?></span>
 
-                <span>Дата рождения : {{isset($userData->burthday) ? 'isset($userData->burthday)' : 'неуказана'}}</span>
+                <span>Дата рождения : {{isset($userData->birthday) ? 'isset($userData->birthday)' : 'неуказана'}}</span>
                 <div class="">
                     <span>Противопоказания:</span>
                     <p>{{isset($userData->contraindications) ? $userData->contraindications : 'Противопоказания не указаны или отсутствуют'}}</p>

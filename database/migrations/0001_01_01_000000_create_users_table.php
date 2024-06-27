@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name',100);
             $table->string('surname',100)->nullable();
             $table->string('family',100)->nullable();
-            $table->date('birthday')->nullable();
             $table->string('tel',12)->nullable();
             $table->string('extra_contacts',255)->nullable();
             $table->string('contraindications',255)->nullable();
@@ -32,7 +31,7 @@ return new class extends Migration
 
             $table->string('photo',255)->nullable();
             $table->string('number',100)->nullable();
-            $table->date('burthday')->nullable();
+            $table->date('birthday')->nullable();
 
             $table->string('driver_license')->nullable();
             $table->boolean('auto')->nullable();

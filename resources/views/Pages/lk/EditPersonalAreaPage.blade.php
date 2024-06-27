@@ -48,9 +48,9 @@
                     <x-general.ui.input
                         title='дата рождения'
                         placeholder='дата рождения'
-                        name='burthday'
+                        name='birthday'
                         type="date"
-                        value='$userData->burthday'
+                        value='$userData->birthday'
                         inputjsclass=''
                         description="Дата рождения"
                         />
