@@ -1,8 +1,4 @@
 <div class="border p-2 rounded-sm flex items-center gap-4 w-full  flex-row">
-    <x-UsersIndexPage.UserInfoItem
-        title="Номер"
-        :content="$data['number']"
-        />
         <x-UsersIndexPage.UserInfoItem
         title="Позывной"
         :content="$data['nickName']"
@@ -20,7 +16,7 @@
         :content="$data['family']"
         />
 
-        <a href="users/{{$data['userId']}}" class=" ml-auto border p-2 hover:bg-slate-500 hover:text-white">Подробнее</a>
+        <a href="{{route('showUser', $data->id)}}" class=" ml-auto border p-2 hover:bg-slate-500 hover:text-white">Подробнее</a>
 
 
 </div>

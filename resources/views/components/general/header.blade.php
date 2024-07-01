@@ -23,6 +23,7 @@
                 <a class="customButton {{(request()->segment(1) == 'organizers') ? 'active' : ''}}" href="{{route('organizers')}}">Организаторы</a>
                 <a class="customButton" href="{{route('locations')}}">Полигоны</a>
                 <a class="customButton" href="{{route('mechanics')}}">механики</a>
+                <a class="customButton {{(request()->segment(1) == 'users') ? 'active' : ''}}" href="{{route('users')}}">Участники</a>
 
             </nav>
             <div class="ml-auto relative">

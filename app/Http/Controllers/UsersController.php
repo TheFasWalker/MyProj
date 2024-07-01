@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -20,7 +21,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('Pages.UsersIndexPage');
+        $data = User::all();
+        return view('Pages.Users.IndexPage',compact('data'));
     }
 
     /**
@@ -42,9 +44,12 @@ class UsersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        //
+
+        return view('Pages.Users.UserPage', compact('user'));
+
+
     }
 
     /**
