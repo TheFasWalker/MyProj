@@ -12,7 +12,7 @@ class Event extends Model
     use SoftDeletes;
 
     protected $guarded =false;
-    protected $table ='Events';
+    protected $table ='events';
 
     public function orgName(){
         return $this->belongsTo(Organizer::class ,'organizator_id','id');

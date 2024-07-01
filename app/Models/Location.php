@@ -13,5 +13,5 @@ class Location extends Model
 
 
     protected $guarded =false;
-    protected $table ='Locations';
+    protected $table ='locations';
 }

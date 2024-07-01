@@ -12,5 +12,5 @@ class Organizer extends Model
     use SoftDeletes;
 
     protected $guarded =false;
-    protected $table ='Organizers';
+    protected $table ='organizers';
 }

@@ -13,5 +13,5 @@ class Mechanics extends Model
 
 
     protected $guarded =false;
-    protected $table ='Mechanics';
+    protected $table ='mechanics';
 }

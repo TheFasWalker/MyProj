@@ -23,6 +23,7 @@ class MechanicsController extends Controller
      */
     public function index()
     {
+
         $data= Mechanics::all();
         // dd($data);
         return view('Pages.MechanicsPage.indexMechanicsPage',compact('data'));
