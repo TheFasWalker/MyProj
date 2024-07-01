@@ -13,7 +13,7 @@ class UserDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        if(! User::find('admin@admin.admin')){
+        if(User::find('admin@admin.admin')){
             User::firstOrCreate([
                 'name'=>'admin',
                 'email'=>'admin@admin.admin',
